@@ -1,0 +1,14 @@
+.hero{
+    background: url('consolas.png') center;
+    background-size: cover;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: center;
+    color: white;
+    font-size: 50px;
+}
+
+body{
+    font-family: arial;
+}
