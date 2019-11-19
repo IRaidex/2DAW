@@ -14,7 +14,7 @@ try {
     echo 'Falló la conexión: ' . $e->getMessage();
 }
 
-$listaGrupos = $conexion->query('SELECT * FROM albumes');
+$listaGrupos = $conexion->query('SELECT * FROM grupos');
 $arrayGrupos = [];
 while($registro = $listaGrupos->fetch()){
     $arrayGrupos[] = $registro;
@@ -34,7 +34,7 @@ while($registro = $listaGrupos->fetch()){
         <?php else: ?>
         <ul>
             <?php foreach ($arrayGrupos as $valor): ?>
-            <li><a href="canciones.php?codigo=<?= $valor['codigo'] ?>"><?=$valor['titulo'] ?></a></li>
+            <li><a href="album.php?codigo=<?= $valor['codigo'] ?>"><?=$valor['nombre'] ?></a></li>
             <?php endforeach ?>
         </ul>
         <?php endif ?>
