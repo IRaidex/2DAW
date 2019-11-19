@@ -1,0 +1,60 @@
+*{margin: 0px; padding: 0px;}
+ul,ul li{margin:0;
+    padding:0;
+    list-style:none}
+h1,h2,h3,p,form{margin:0;padding:0}
+
+header{
+    Display: Flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+a{
+    text-decoration: none;
+}
+
+nav{
+    border: 1px solid black;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#izquierda{
+    border: 1px solid black;
+    padding: 10px; 
+    flex:1;
+}
+#derecha{
+    border: 1px solid black;
+    padding: 10px;
+    flex:1;
+    /*height: 50% El height lo usaremos para subir el borde de abajo*/
+}
+body{
+    width:100%;
+    max-width:900px;
+    margin:0 auto;
+}
+
+#main {
+    border: 1px solid black;
+    padding: 10px;
+    flex:2;
+}
+
+#contenedor{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+footer{
+    border: 1px solid black;
+    Display: Flex;
+    width: 98.15%;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding: 0.5em;
+}

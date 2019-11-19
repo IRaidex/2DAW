@@ -1,0 +1,64 @@
+#titulo1{color: #2d8699;
+}
+
+#titulo2{color: blue;
+}
+
+#spanRojo{
+    color: red;
+    font-weight: bold;
+}
+
+#spanNaranja{
+    color: orange;
+}
+
+#spanUnder1{
+    color:red;
+    text-decoration: underline;
+}
+
+#spanUnder2{
+    color:blue;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+table,td,tr{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#tablaNaranja{
+    color: orange;
+    font-weight: bold;
+}
+
+#tablaRojo{
+    color: red;
+    font-weight: bold;
+}
+
+#tablaVerde1{
+    color: green;
+}
+
+#tablaVerde2{
+    color: green;
+    font-style: italic;
+}
+
+
+#textoVerde2{
+    color: green;
+    text-decoration: underline;
+}
+
+
+table ~ p{
+    color:olive;
+}
+
+table ~ p span{
+    color:violet;
+}

@@ -1,0 +1,42 @@
+header{
+    background-color: #AD49C4;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+body{
+    font-family: arial;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 0px;
+}
+
+img{
+    width: 250px;
+    height: 250px;
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3%;
+    margin-bottom: 3%;
+
+}
+
+article{
+    border: 5px solid #AD49C4;
+}
+
+p{
+    text-align: center;
+}
+
+footer{
+    background-color: #AD49C4;
+    color: white;
+    font-size: 20px;
+    padding: 3%;
+}
+
