@@ -27,16 +27,31 @@ while($registro = $listaGrupos->fetch()){
     <head>
         <meta charset="UTF-8">
         <title>Document</title>
+        <style>
+            table,tr{
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+        </style>
     </head>
     <body>
         <?php if($error): ?>
         <?=  $error ?>
         <?php else: ?>
-        <ul>
+        <table>
             <?php foreach ($arrayGrupos as $valor): ?>
-            <li><a href="album.php?codigo=<?= $valor['codigo'] ?>"><?=$valor['nombre'] ?></a></li>
+            <tr>
+                <td><a href="album.php?codigo=<?= $valor['codigo'] ?>"><?=$valor['nombre'] ?></a></td>
+                <td><button><img src="papelera.jpg" alt="papelera" width="25" height="25"></button></td>
+            </tr>
             <?php endforeach ?>
-        </ul>
+        </table>
         <?php endif ?>
+        <br>
+        <h1>Añadir Grupo</h1>
+        <form action="discografia.php">
+            <p>Nombre del grupo</p>
+            <input type="text" name="grupo">      
+        </form>  
     </body>
 </html>

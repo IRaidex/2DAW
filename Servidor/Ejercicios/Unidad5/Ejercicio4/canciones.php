@@ -29,7 +29,7 @@ while($registro = $listaCanciones->fetch()){
         <meta charset="UTF-8">
         <title>Document</title>
         <style>
-            table,tr,td{
+            table,tr{
                 border: 1px solid black;
                 border-collapse: collapse;
             }
@@ -43,6 +43,7 @@ while($registro = $listaCanciones->fetch()){
             <?php foreach ($arrayCanciones as $valor): ?>
             <tr>
                 <td><?=$valor['titulo']?></td>
+                <td><button><img src="papelera.jpg" alt="papelera" width="25" height="25"></button></td>
             </tr>
             <?php endforeach ?>
         </table>
