@@ -1,0 +1,1 @@
+var guardar = JSON.stringify({nombre:"Peter",apellido:"Griffin",email:"petgrif@mail.com",telefono:"961234567",movil:"654000456",direccion:"Calle del pez 7, 23",provincia:"Valencia",localidad:"Manises"});sessionStorage.setItem("objetoJSON", guardar);document.cookie="objetoJSON="+guardar+";expires=Wed, 15 Apr 2020 18:15:00 UTC;path=/";
