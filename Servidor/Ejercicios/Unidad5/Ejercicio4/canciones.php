@@ -13,6 +13,22 @@ try {
     echo 'Falló la conexión: ' . $e->getMessage();
 }
 
+
+if(isset($_POST["enviar"])){
+    if($_POST["titulo"] != "" && $_POST["duracion"] != "" && $_POST["posicion"] != ""){
+
+        $consulta = $conexion->prepare('INSERT INTO canciones (titulo,album,duracion,posicion) VALUES (?,?,?,?);');
+        $consulta->bindParam(1, $_POST["titulo"]);
+        $consulta->bindParam(2, $_REQUEST["grupo"]);
+        $consulta->bindParam(3, $_POST["anyo"]);
+        $consulta->bindParam(4, $_POST["formato"]);
+        $consulta->bindParam(5, $_POST["fecha"]);
+        $consulta->bindParam(6, $_POST["precio"]);
+        $consulta->execute();
+
+    }
+}
+
 $listaCanciones = $conexion->prepare('SELECT titulo FROM canciones WHERE album = ?;');
 $listaCanciones->bindParam(1, $_GET["codigo"]);
 $listaCanciones->execute();
@@ -50,5 +66,16 @@ while($registro = $listaCanciones->fetch()){
         <a href="javascript:history.back()">Atras</a>
         <a href="discografia.php">Volver al principio</a>
         <?php endif ?>
+        <h1>Añadir Cancion</h1>
+        <form action="#" method="post">
+            <label for="nombre">Titulo</label>
+            <input type="text" name="titulo">             
+            <label for="anyo">Duracion</label>
+            <input type="text" name="duracion">
+            <label for="formato">Posicion</label>
+            <input type="text" name="posicion">
+            <input type="hidden" name="album" value="<?=$_REQUEST["codigo"];?>">
+            <button type="submit" name="enviar">Enviar</button>      
+        </form>
     </body>
 </html>

@@ -14,6 +14,16 @@ try {
     echo 'Falló la conexión: ' . $e->getMessage();
 }
 
+if(isset($_POST["enviar"])){
+    if($_POST["grupo"] != ""){
+
+        $consulta = $conexion->prepare('INSERT INTO grupos (nombre) VALUES (?);');
+        $consulta->bindParam(1, $_POST["grupo"]);
+        $consulta->execute();
+
+    }
+}
+
 $listaGrupos = $conexion->query('SELECT * FROM grupos');
 $arrayGrupos = [];
 while($registro = $listaGrupos->fetch()){
@@ -49,9 +59,10 @@ while($registro = $listaGrupos->fetch()){
         <?php endif ?>
         <br>
         <h1>Añadir Grupo</h1>
-        <form action="discografia.php">
+        <form action="#" method="post">
             <p>Nombre del grupo</p>
-            <input type="text" name="grupo">      
+            <input type="text" name="grupo">
+            <button type="submit" name="enviar">Enviar</button>      
         </form>  
     </body>
 </html>

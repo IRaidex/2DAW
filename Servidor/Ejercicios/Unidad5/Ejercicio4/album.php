@@ -13,6 +13,24 @@ try {
     echo 'Falló la conexión: ' . $e->getMessage();
 }
 
+if(isset($_POST["enviar"])){
+    if($_POST["nombre"] != "" && $_POST["anyo"] != "" && $_POST["formato"] != "" && $_POST["fecha"] != "" && $_POST["precio"] != ""){
+
+        $consulta = $conexion->prepare('INSERT INTO albumes (titulo,grupo,anyo,formato,fechacompra,precio) VALUES (?,?,?,?,?,?);');
+        $consulta->bindParam(1, $_POST["nombre"]);
+        $consulta->bindParam(2, $_REQUEST["grupo"]);
+        $consulta->bindParam(3, $_POST["anyo"]);
+        $consulta->bindParam(4, $_POST["formato"]);
+        $consulta->bindParam(5, $_POST["fecha"]);
+        $consulta->bindParam(6, $_POST["precio"]);
+        $consulta->execute();
+
+    }
+}
+
+
+
+
 $listaAlbumes = $conexion->prepare('SELECT * FROM albumes WHERE grupo = ?');
 $listaAlbumes->bindParam(1, $_GET['codigo']);
 $listaAlbumes->execute();
@@ -53,13 +71,19 @@ while($registro = $listaAlbumes->fetch()){
 
         <br>
         <h1>Añadir Album</h1>
-        <form action="album.php">
-            <p>Nombre del Album</p>
+        <form action="#" method="post">
+            <label for="nombre">Titulo del Album</label>
             <input type="text" name="nombre">             
-            <p>Año</p>
+            <label for="anyo">Año</label>
             <input type="text" name="anyo">
-            <p>Formato</p>
-            <input type="text" name="formato">      
+            <label for="formato">Formato</label>
+            <input type="text" name="formato">
+            <label for="fecha">Fecha de Compra</label>
+            <input type="date" name="fecha">
+            <label for="precio">Precio</label>
+            <input type="text" name="precio">
+            <input type="hidden" name="grupo" value="<?=$_REQUEST["codigo"];?>">
+            <button type="submit" name="enviar">Enviar</button>      
         </form>
 
     </body>
