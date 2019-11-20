@@ -16,7 +16,7 @@ function funCargar(){
     }
 
     function clicButton(){
-        alert("hola");
+       
         if(this.innerHTML=="Rick"){
             document.getElementById('foto').setAttribute("src",'rick.png');
         }if(this.innerHTML=="Morty"){

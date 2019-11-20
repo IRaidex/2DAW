@@ -41,7 +41,7 @@ function crearComentario(coment){
     span2.setAttribute("class","fecha");
     var fecha = new Date();
     
-    span2.innerHTML = fecha.getHours()+":"+fecha.getMinutes()+" - "+fecha.getDay()+" "+sacarMes(fecha.getMonth())+" "+fecha.getFullYear();
+    span2.innerHTML = fecha.getHours()+":"+fecha.getMinutes()+" - "+fecha.getDate()+" "+sacarMes(fecha.getMonth())+" "+fecha.getFullYear();
     
     div.appendChild(span2);
     var div2 = document.createElement("div");

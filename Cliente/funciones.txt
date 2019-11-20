@@ -1,0 +1,49 @@
+SCROLL
+
+    function eliminar(){
+        var alturaWeb=document.body.offsetHeight;
+        var altura=window.scrollY;
+        var alturaVisible=window.innerHeight;
+
+        if(altura+alturaVisible>=alturaWeb){
+            for(var i=0 ; i<parrafos.length;i++){
+                parrafos[i].remove();
+            }
+        }
+    }
+
+
+ SELECTS ud6ej2-2.js "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z0-9$@$!%*?&]{8,15}"
+
+class Alumno{
+    
+    constructor(dni,nombre,notaMedia){
+        this.dni = dni;
+        this.nombre = nombre;
+        this.notaMedia = notaMedia;
+    }
+    
+    toString(){
+        return this.dni + " " + this.nombre + " " + this.notaMedia;
+    }
+    
+    modNota(notaMedia){
+        this.notaMedia = notaMedia;
+    }
+    
+}
+
+function Instituto(nombre,numAulas,numAlumnos){
+    this.nombre = nombre;
+    this.numAulas = numAulas;
+    this.numAlumnos = numAlumnos;
+    
+    this.toString = function toString(){
+        return this.nombre+" "+this.numAulas+" "+this.numAlumnos;
+    }
+    
+    this.modAlumnos = function modAlumnos(numAlumnos){
+        this.numAlumnos = numAlumnos;
+    }
+    
+}
