@@ -51,6 +51,12 @@ while($registro = $listaAlbumes->fetch()){
                 border: 1px solid black;
                 border-collapse: collapse;
             }
+            label{
+                display: inline-block;
+                width: 80px;
+                padding: 5px;
+            }
+ 
         </style>
     </head>
     <body>
@@ -72,17 +78,17 @@ while($registro = $listaAlbumes->fetch()){
         <br>
         <h1>Añadir Album</h1>
         <form action="#" method="post">
-            <label for="nombre">Titulo del Album</label>
-            <input type="text" name="nombre">             
+            <label for="nombre">Titulo</label>
+            <input type="text" name="nombre"><br>            
             <label for="anyo">Año</label>
-            <input type="text" name="anyo">
+            <input type="text" name="anyo"><br>
             <label for="formato">Formato</label>
-            <input type="text" name="formato">
+            <input type="text" name="formato"><br>
             <label for="fecha">Fecha de Compra</label>
-            <input type="date" name="fecha">
+            <input type="date" name="fecha"><br>
             <label for="precio">Precio</label>
-            <input type="text" name="precio">
-            <input type="hidden" name="grupo" value="<?=$_REQUEST["codigo"];?>">
+            <input type="text" name="precio"><br>
+            <input type="hidden" name="grupo" value="<?=$_REQUEST["codigo"];?>"><br>
             <button type="submit" name="enviar">Enviar</button>      
         </form>
 

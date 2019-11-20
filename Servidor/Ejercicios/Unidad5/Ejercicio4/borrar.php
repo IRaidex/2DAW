@@ -1,0 +1,19 @@
+<?php
+
+$servidor = "localhost";
+$basededatos = "mysql:host=localhost;dbname=discografia";
+$usuario = 'root';
+$contraseña = '';
+$error="";
+
+try {
+    $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
+    $conexion = new PDO($basededatos, $usuario, $contraseña , $opciones );
+} catch (PDOException $e) {
+    echo 'Falló la conexión: ' . $e->getMessage();
+}
+
+$consulta = $conexion->prepare('DELETE FROM ;');
+$consulta->bindParam(1, $_POST["nombre"]);
+
+$consulta->execute();
