@@ -19,11 +19,9 @@ if(isset($_POST["enviar"])){
 
         $consulta = $conexion->prepare('INSERT INTO canciones (titulo,album,duracion,posicion) VALUES (?,?,?,?);');
         $consulta->bindParam(1, $_POST["titulo"]);
-        $consulta->bindParam(2, $_REQUEST["grupo"]);
-        $consulta->bindParam(3, $_POST["anyo"]);
-        $consulta->bindParam(4, $_POST["formato"]);
-        $consulta->bindParam(5, $_POST["fecha"]);
-        $consulta->bindParam(6, $_POST["precio"]);
+        $consulta->bindParam(2, $_REQUEST["album"]);
+        $consulta->bindParam(3, $_POST["duracion"]);
+        $consulta->bindParam(4, $_POST["posicion"]);
         $consulta->execute();
 
     }
@@ -59,7 +57,7 @@ while($registro = $listaCanciones->fetch()){
             <?php foreach ($arrayCanciones as $valor): ?>
             <tr>
                 <td><?=$valor['titulo']?></td>
-                <td><button><img src="papelera.jpg" alt="papelera" width="25" height="25"></button></td>
+                <td><a href="#"><img src="papelera.jpg" alt="papelera" width="25" height="25"></a></td>
             </tr>
             <?php endforeach ?>
         </table>
