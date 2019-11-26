@@ -1,34 +1,19 @@
 
 <?php
 
-$servidor = "localhost";
-$basededatos = "mysql:host=localhost;dbname=discografia";
-$usuario = 'root';
-$contraseña = '';
-$error="";
+require_once"conexion.php";
 
 try {
-    $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
-    $conexion = new PDO($basededatos, $usuario, $contraseña , $opciones );
+    $listaGrupos = $conexion->query('SELECT * FROM grupos');
+    $arrayGrupos = [];
+    while($registro = $listaGrupos->fetch()){
+        $arrayGrupos[] = $registro;
+    }  
+
 } catch (PDOException $e) {
     echo 'Falló la conexión: ' . $e->getMessage();
 }
 
-if(isset($_POST["enviar"])){
-    if($_POST["grupo"] != ""){
-
-        $consulta = $conexion->prepare('INSERT INTO grupos (nombre) VALUES (?);');
-        $consulta->bindParam(1, $_POST["grupo"]);
-        $consulta->execute();
-
-    }
-}
-
-$listaGrupos = $conexion->query('SELECT * FROM grupos');
-$arrayGrupos = [];
-while($registro = $listaGrupos->fetch()){
-    $arrayGrupos[] = $registro;
-}  
 
 ?>
 
@@ -43,6 +28,7 @@ while($registro = $listaGrupos->fetch()){
                 border-collapse: collapse;
             }
         </style>
+         <script src="confirmar.js"></script>
     </head>
     <body>
         <?php if($error): ?>
@@ -52,14 +38,14 @@ while($registro = $listaGrupos->fetch()){
             <?php foreach ($arrayGrupos as $valor): ?>
             <tr>
                 <td><a href="album.php?codigo=<?= $valor['codigo'] ?>"><?=$valor['nombre'] ?></a></td>
-                <td><button><img src="papelera.jpg" alt="papelera" width="25" height="25"></button></td>
+                <td><a href="javascript:confirmar('grupos','<?=$valor['codigo']?>')"><img src="papelera.jpg" alt="papelera" width="25" height="25"></a></td>
             </tr>
             <?php endforeach ?>
         </table>
         <?php endif ?>
         <br>
         <h1>Añadir Grupo</h1>
-        <form action="#" method="post">
+        <form action="addGrupo.php" method="post">
             <p>Nombre del grupo</p>
             <input type="text" name="grupo">
             <button type="submit" name="enviar">Enviar</button>      

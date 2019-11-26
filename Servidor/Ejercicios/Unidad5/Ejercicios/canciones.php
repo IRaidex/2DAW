@@ -1,39 +1,19 @@
 <?php
 
-$servidor = "localhost";
-$basededatos = "mysql:host=localhost;dbname=discografia";
-$usuario = 'root';
-$contraseña = '';
-$error="";
+require_once"conexion.php";
+
 
 try {
-    $opciones = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
-    $conexion = new PDO($basededatos, $usuario, $contraseña , $opciones );
+    $listaCanciones = $conexion->prepare('SELECT titulo,codigo FROM canciones WHERE album = ?;');
+    $listaCanciones->bindParam(1, $_GET["codigo"]);
+    $listaCanciones->execute();
+    $arrayCanciones = [];
+    while($registro = $listaCanciones->fetch()){
+        $arrayCanciones[] = $registro;
+    }  
 } catch (PDOException $e) {
     echo 'Falló la conexión: ' . $e->getMessage();
 }
-
-
-if(isset($_POST["enviar"])){
-    if($_POST["titulo"] != "" && $_POST["duracion"] != "" && $_POST["posicion"] != ""){
-
-        $consulta = $conexion->prepare('INSERT INTO canciones (titulo,album,duracion,posicion) VALUES (?,?,?,?);');
-        $consulta->bindParam(1, $_POST["titulo"]);
-        $consulta->bindParam(2, $_REQUEST["album"]);
-        $consulta->bindParam(3, $_POST["duracion"]);
-        $consulta->bindParam(4, $_POST["posicion"]);
-        $consulta->execute();
-
-    }
-}
-
-$listaCanciones = $conexion->prepare('SELECT titulo FROM canciones WHERE album = ?;');
-$listaCanciones->bindParam(1, $_GET["codigo"]);
-$listaCanciones->execute();
-$arrayCanciones = [];
-while($registro = $listaCanciones->fetch()){
-    $arrayCanciones[] = $registro;
-}  
 
 ?>
 
@@ -47,12 +27,13 @@ while($registro = $listaCanciones->fetch()){
                 border: 1px solid black;
                 border-collapse: collapse;
             }
-           label{
+            label{
                 display: inline-block;
                 width: 80px;
                 padding: 5px;
             }
         </style>
+        <script src="confirmar.js"></script>
     </head>
     <body>
         <?php if($error): ?>
@@ -62,7 +43,7 @@ while($registro = $listaCanciones->fetch()){
             <?php foreach ($arrayCanciones as $valor): ?>
             <tr>
                 <td><?=$valor['titulo']?></td>
-                <td><a href=""><img src="papelera.jpg" alt="papelera" width="25" height="25"></a></td>
+                <td><a href="javascript:confirmar('canciones','<?=$valor['codigo']?>')"><img src="papelera.jpg" alt="papelera" width="25" height="25"></a></td>
             </tr>
             <?php endforeach ?>
         </table>
@@ -70,7 +51,7 @@ while($registro = $listaCanciones->fetch()){
         <a href="discografia.php">Volver al principio</a>
         <?php endif ?>
         <h1>Añadir Cancion</h1>
-        <form action="#" method="post">
+        <form action="addCancion.php" method="post">
             <label for="nombre">Titulo</label>
             <input type="text" name="titulo"><br>             
             <label for="anyo">Duracion</label>
@@ -80,5 +61,34 @@ while($registro = $listaCanciones->fetch()){
             <input type="hidden" name="album" value="<?=$_REQUEST["codigo"];?>"><br>
             <button type="submit" name="enviar">Enviar</button>      
         </form>
+        
+        <script>
+        
+        function confirmar(tabla,valor){
+            let url = 'borrar.php?tabla='+tabla+'&codigo='+valor;
+            if(confirm("Seguro que quieres borrar?")){
+               location.href = url;
+               }
+        }
+        
+        
+        </script>
+        
+        
+        
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
