@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+h1, h2 {
+	margin: 1em 3%;
+	padding: 0;
+}
+section {
+	margin: 0 5%;
+}
+#botones {
+	margin: .2em 0;
+}
+.boton {
+	margin: 0 auto;
+	padding: .5em;
+	width: 5em;
+	text-align: center;
+	background-color: bisque;
+	border-radius: .5em;
+}
+.boton:hover {
+	background-color: cadetblue;
+	color: white;
+}
+a {
+	display: inline-block;
+	width: 100%;
+	font-weight: bold;
+	color: black;
+	text-decoration: none;
+}
+
+article {
+	display: inline-block;
+	width: 18%;
+	margin: 2%;
+	padding: .3em 0;
+	text-align: center;
+	background-color: antiquewhite;
+	border-radius: 1em;
+}
+article .imgProducto {
+	width: 100%;
+	height: auto;
+}
+.botonesCarrito {
+	display: block;
+	margin: .3em 0;
+}
+.botonesCarrito a {
+	width: 25%;
+}
+.botonesCarrito img:hover {
+	background-color: darkorange;
+	border-radius: .3em;
+}
+.botonesCarrito img {
+	width: 50%;
+}
