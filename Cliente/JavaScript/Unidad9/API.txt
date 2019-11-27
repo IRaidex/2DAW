@@ -1,0 +1,51 @@
+Peticiones GET:
+
+https://tutiendaweb.com/api/productos -> Para sacar todos los productos.
+
+productos[
+{
+	"idProducto":1,
+	"idCategoria":Ordenadores,
+	"idSubcategoria":Sobremesa,
+	"nomProducto":HP Pavilon 77
+}
+]
+
+https://tutiendaweb.com/api/categorias -> Para sacar todas las categorias.
+
+categorias[
+{
+	"idCategoria":2,
+	"nomCategoria":Impresoras,
+	"subCAtegorias":Inyeccion,laser,moviles
+
+}
+]
+
+https://tutiendaweb.com/api/categoria/subcategoria -> Para sacar los productos de esa subcategoria.
+
+productos[
+{
+	"idProducto":34,
+	"idCategoria":Ordenadores,
+	"idSubcategoria":Sobremesa,
+	"nomProducto":Acer Megatron
+}
+]
+
+
+
+
+Peticion Post:
+
+https://tutiendaweb.com/api/idproducto/comentario -> Para añadir un comentario a ese producto.
+
+comentario{
+
+	"idProducto":13,
+	"idCategoria":Moviles,
+	"idSubcategoria":Android,
+	"nomProducto":Honor 10 Lite,
+	"Comentario": Este producto tiene mis dieses.
+
+}
