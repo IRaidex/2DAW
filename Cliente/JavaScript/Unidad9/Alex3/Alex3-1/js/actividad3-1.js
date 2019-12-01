@@ -1,7 +1,7 @@
 /*
 autor: Alex Salcedo Santamaria                    
 
-ejercicio:  actividad3.js
+ejercicio:  actividad3-1.js
 */
 
 document.addEventListener("DOMContentLoaded", funCargar);
