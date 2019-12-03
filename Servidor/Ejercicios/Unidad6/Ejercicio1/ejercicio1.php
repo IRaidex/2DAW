@@ -1,6 +1,5 @@
 <?php
 
-
 if(isset($_POST["cookie"])){
     //Pongo 10 s para comprobar antes si funciona.
     setcookie('cookie', 'aceptar', time()+10);
