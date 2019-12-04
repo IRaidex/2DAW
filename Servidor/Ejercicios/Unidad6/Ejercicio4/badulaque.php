@@ -1,16 +1,44 @@
 <?php
-
+session_start();
 require_once"conexion.php";
 
 try {
     $listaProductos = $conexion->query('SELECT * FROM productos;');
     $arrayProductos = [];
     while($registro = $listaProductos->fetch()){
-        $arrayProductos[] = $registro;
+        $arrayProductos[$registro['nombre']] = $registro;
     }  
 
 } catch (PDOException $e) {
     echo 'Falló la conexión: ' . $e->getMessage();
+}
+
+
+if(isset($_POST["opcion"])){
+
+    $boton = $_POST["opcion"];
+    $nombre = $_POST["nombre"];
+    
+   echo $arrayProductos[$nombre][4];
+    
+    if($boton == "borrar"){
+        unset($_SESSION[$nombre]);
+    }else{
+        if(!isset($_SESSION[$nombre])){
+            if($boton == "+1"){
+                echo $_SESSION[$nombre] = 1;    
+            } 
+        }else{
+            if($_SESSION[$nombre] < $arrayProductos[$nombre]["stock"]){
+                echo $_SESSION[$nombre] += (int)$boton;
+                echo "nombre = $nombre<br>$_SESSION[$nombre] == 0 ?";
+                if($_SESSION[$nombre] == 0) unset($_SESSION[$nombre]);
+            }
+
+        }
+    }
+
+
 }
 
 
@@ -68,7 +96,11 @@ try {
         </style>
     </head>
     <body>
-
+<!--
+<pre>session => <?php print_r ($_SESSION) ?></pre>
+<pre>post => <?php print_r ($_POST) ?></pre>
+<pre>$arrayProductos => <?php print_r ($arrayProductos) ?></pre>
+-->
         <div class="jumbotron text-center header">
             <span id="cabecera">Fruteria</span> 
         </div>
@@ -103,12 +135,14 @@ try {
                 <div class="col-md-6 galeria">
                     <p><?=$valor['nombre'] ?></p>
                     <img src="<?=$valor['imagen'] ?>" alt="fruta">
-                    <p>Precio: <?=$valor['precio'] ?></p>
-                    <p>Unidad: <?=$valor['unidad'] ?></p>
+                    <p>Precio: <?=$valor['precio'] ?>€/<?=$valor['unidad'] ?></p>
                     <p>Stock: <?=$valor['stock'] ?></p>
-                    <button type="submit" name="añadir" value="+1"><img class="imagenes" src="img/productos/mas.png" alt="mas"></button>
-                    <button type="submit" name="quitar" value="-1"><img class="imagenes" src="img/productos/menos.png" alt="mas"></button>
-                    <button type="submit" name="papelera" value="borrar"><img class="imagenes" src="img/productos/papelera.png" alt="mas"></button>
+                    <form action="#" method="post">
+                        <button type="submit" name="opcion" value="+1"><img class="imagenes" src="img/productos/mas.png" alt="sumar"></button>
+                        <button type="submit" name="opcion" value="-1"><img class="imagenes" src="img/productos/menos.png" alt="restar"></button>
+                        <button type="submit" name="opcion" value="borrar"><img class="imagenes" src="img/productos/papelera.png" alt="borrar"></button>
+                        <input type="hidden" name="nombre" value="<?=$valor['nombre'] ?>">
+                    </form>
                 </div>
                 <?php endforeach ?>
                 <?php endif ?>
@@ -119,7 +153,7 @@ try {
                 <small>Copyright &copy; Your Website</small>
             </div>            
             <div class="container text-center">
-                <small>Email: game@gmail.com</small>
+                <small>Email: fruteria@gmail.com</small>
             </div>
             <div class="container text-center">
                 <small>Telefono: 961331449</small>

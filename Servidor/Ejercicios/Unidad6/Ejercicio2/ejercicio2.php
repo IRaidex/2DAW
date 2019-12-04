@@ -1,7 +1,9 @@
 <?php
-session_start();
+
 if(isset($_POST["modo"])){
-    $_SESSION["cookie"] = $_POST["modo"];
+    
+    setcookie("cookie",$_POST["modo"],time()+30);
+    $_COOKIE["cookie"] = $_POST["modo"];
 }
 
 ?>
@@ -10,7 +12,7 @@ if(isset($_POST["modo"])){
     <head>
         <meta charset="UTF-8">
         <title>Document</title>
-        <link rel="stylesheet" href="<?= $_SESSION["cookie"] ?>">
+        <link rel="stylesheet" href="<?= $_COOKIE["cookie"] ?>">
     </head>
     <body>
         <form action="#" method="post">
