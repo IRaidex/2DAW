@@ -37,12 +37,13 @@
 	}
 	#errorUser img, #errorMail img {
 		height: 24px;
-		display: none;
+		display: block;
 	}
 	.mensaje {
 		display: none;
 	}
 </style>
+<script src="js/alex4-2.js"></script>
 </head>
 
 <body>

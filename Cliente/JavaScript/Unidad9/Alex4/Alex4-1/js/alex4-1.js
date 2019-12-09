@@ -29,9 +29,9 @@ function comentar(evento){
     
     console.log(nombre.value);
     console.log(mail.value);
-    console.log(coment.innerHTML);
+    console.log(coment.value);
 
-    if(nombre.value.length==0 || mail.value.length==0 || coment.innerHTML.length==0){
+    if(nombre.value.length==0 || mail.value.length==0 || coment.value.length==0){
         alert("Los campos no pueden estar vacios");
     }else{
         nombre.value.trim();
@@ -71,7 +71,7 @@ function peticion(nombre,mail,coment){
 
     var httpRequest = obtainXMLHttpRequest();
 
-    httpRequest.open("POST","/insertar.php", true);
+    httpRequest.open("POST","http://localhost/2DAW/Cliente/JavaScript/Unidad9/Alex4/Alex4-1/insertar.php", true);
     httpRequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
     httpRequest.onreadystatechange= function() {
@@ -116,7 +116,9 @@ function peticion(nombre,mail,coment){
                 div3.setAttribute("class","texto");
                 div3.innerHTML = coment.value;
                 div1.appendChild(div3);
-
+                
+                console.log(httpRequest.responseText);
+                
             }
         }
     }

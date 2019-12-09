@@ -149,14 +149,14 @@
 <h2>Comenta la noticia</h2>
 <form id="formulario" method="post">
 	<label for="nombre" class="colIzq">Nombre</label>
-	<input type="text" name="nombre" id="nombre">
+	<input type="text" name="nombre" id="nombre" value="alex">
 	<br>
 	<label for="mail" class="colIzq">E-mail</label>
-	<input type="text" name="mail" id="mail">
+	<input type="text" name="mail" id="mail" value="alex@gmail.com">
 	<br>
 	<label for="comentario">Comentario</label>
 	<br>
-	<textarea name="comentario" id="comentario"></textarea>
+	<textarea name="comentario" id="comentario">Hola</textarea>
 	
 	<div id="botones">
 		<input type="submit" value="Comentar" class="boton" id="comentar">
