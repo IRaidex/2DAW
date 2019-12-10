@@ -1,46 +1,5 @@
 <?php
 session_start();
-require_once"conexion.php";
-
-try {
-    $listaProductos = $conexion->query('SELECT * FROM productos;');
-    $arrayProductos = [];
-    while($registro = $listaProductos->fetch()){
-        $arrayProductos[$registro['nombre']] = $registro;
-    }  
-
-} catch (PDOException $e) {
-    echo 'Falló la conexión: ' . $e->getMessage();
-}
-
-
-if(isset($_POST["opcion"])){
-
-    $boton = $_POST["opcion"];
-    $nombre = $_POST["nombre"];
-
-    echo $arrayProductos[$nombre][4];
-
-    if($boton == "borrar"){
-        unset($_SESSION[$nombre]);
-    }else{
-        if(!isset($_SESSION[$nombre])){
-            if($boton == "+1"){
-                echo $_SESSION[$nombre] = 1;    
-            } 
-        }else{
-            if($_SESSION[$nombre] < $arrayProductos[$nombre]["stock"]){
-                echo $_SESSION[$nombre] += (int)$boton;
-                echo "nombre = $nombre<br>$_SESSION[$nombre] == 0 ?";
-                if($_SESSION[$nombre] == 0) unset($_SESSION[$nombre]);
-            }
-
-        }
-    }
-
-
-}
-
 
 
 ?>
@@ -67,9 +26,11 @@ if(isset($_POST["opcion"])){
             }
             .header{
                 font-size: 75px;
-                background: url('img/fondo.jpg')center;
+                background: url('img/hero.jpg');
+                background-size: cover;
                 color: #462ee0;
                 margin: 0;
+                padding: 3.3em;
             }
 
             #cabecera{
@@ -97,55 +58,45 @@ if(isset($_POST["opcion"])){
                 color: red;
             }
             #kfc{
-                width: 75px;
+                width: 100px;
                 height: 75px;
+            }
+            nav{
+                font-size: 20px;
             }
         </style>
     </head>
     <body>
 
         <div class="jumbotron text-center header">
+<!--
             <span id="cabecera">Fruteria</span> 
+-->
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <img src="img/kfc.png" alt="kfc" id="kfc">
+            <img src="img/logo.png" alt="kfc" id="kfc">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="badulaque.php">Badulaque <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="badulaque.php">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="carrito.php">Carrito</a>
+                        <a class="nav-link" href="carrito.php">Registro</a>
+                    </li>                    
+                    <li class="nav-item active">
+                        <a class="nav-link" href="carrito.php">Login</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div class="container-fluid ">
             <div class="row justify-content-center">
-                <?php if($error): ?>
-                <?=  $error ?>
-                <?php else: ?>
-                <?php foreach ($arrayProductos as $valor): ?>
                 <div class="col-md-6 galeria p-5">
-                    <h1><?=$valor['nombre'] ?></h1>
-                    <img src="<?=$valor['imagen'] ?>" alt="fruta">
-                    <p>Precio: <?=$valor['precio'] ?>€/<?=$valor['unidad'] ?></p>
-                    <p>Stock: <?=$valor['stock'] ?></p>
-                    <?php if(isset($_SESSION[$valor["nombre"]])): ?>
-                    <p id="rojo">Seleccionados: <?=($_SESSION[$valor["nombre"]]) ?></p>
-                    <?php endif ?>
-                    <form action="#" method="post">
-                        <button type="submit" name="opcion" value="+1"><img class="imagenes" src="img/productos/mas.png" alt="sumar"></button>
-                        <button type="submit" name="opcion" value="-1"><img class="imagenes" src="img/productos/menos.png" alt="restar"></button>
-                        <button type="submit" name="opcion" value="borrar"><img class="imagenes" src="img/productos/papelera.png" alt="borrar"></button>
-                        <input type="hidden" name="nombre" value="<?=$valor['nombre'] ?>">
-                    </form>
+                    
                 </div>
-                <?php endforeach ?>
-                <?php endif ?>
             </div>
         </div>
         <footer id="sticky-footer" class="py-4 bg-dark text-white-50">

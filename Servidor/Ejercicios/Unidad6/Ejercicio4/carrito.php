@@ -1,51 +1,6 @@
 <?php
 session_start();
-require_once"conexion.php";
-
-try {
-    $listaProductos = $conexion->query('SELECT * FROM productos;');
-    $arrayProductos = [];
-    while($registro = $listaProductos->fetch()){
-        $arrayProductos[$registro['nombre']] = $registro;
-    }  
-
-} catch (PDOException $e) {
-    echo 'Falló la conexión: ' . $e->getMessage();
-}
-
-
-if(isset($_POST["opcion"])){
-
-    $boton = $_POST["opcion"];
-    $nombre = $_POST["nombre"];
-
-    echo $arrayProductos[$nombre][4];
-
-    if($boton == "borrar"){
-        unset($_SESSION[$nombre]);
-    }else{
-        if(!isset($_SESSION[$nombre])){
-            if($boton == "+1"){
-                echo $_SESSION[$nombre] = 1;    
-            } 
-        }else{
-            if($_SESSION[$nombre] < $arrayProductos[$nombre]["stock"]){
-                echo $_SESSION[$nombre] += (int)$boton;
-                echo "nombre = $nombre<br>$_SESSION[$nombre] == 0 ?";
-                if($_SESSION[$nombre] == 0) unset($_SESSION[$nombre]);
-            }
-
-        }
-    }
-
-
-}
-
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,11 +45,15 @@ if(isset($_POST["opcion"])){
                 text-align:center;
 
             }
-            .footer{
+            footer{
                 justify-content: space-around;
+                margin-top: 13%;
             }
             #rojo{
                 color: red;
+            }
+            #cesta{
+                padding: 1%;
             }
             #kfc{
                 width: 75px;
@@ -103,6 +62,8 @@ if(isset($_POST["opcion"])){
         </style>
     </head>
     <body>
+
+
 
         <div class="jumbotron text-center header">
             <span id="cabecera">Fruteria</span> 
@@ -123,32 +84,18 @@ if(isset($_POST["opcion"])){
                 </ul>
             </div>
         </nav>
-        <div class="container-fluid ">
-            <div class="row justify-content-center">
-                <?php if($error): ?>
-                <?=  $error ?>
-                <?php else: ?>
-                <?php foreach ($arrayProductos as $valor): ?>
-                <div class="col-md-6 galeria p-5">
-                    <h1><?=$valor['nombre'] ?></h1>
-                    <img src="<?=$valor['imagen'] ?>" alt="fruta">
-                    <p>Precio: <?=$valor['precio'] ?>€/<?=$valor['unidad'] ?></p>
-                    <p>Stock: <?=$valor['stock'] ?></p>
-                    <?php if(isset($_SESSION[$valor["nombre"]])): ?>
-                    <p id="rojo">Seleccionados: <?=($_SESSION[$valor["nombre"]]) ?></p>
-                    <?php endif ?>
-                    <form action="#" method="post">
-                        <button type="submit" name="opcion" value="+1"><img class="imagenes" src="img/productos/mas.png" alt="sumar"></button>
-                        <button type="submit" name="opcion" value="-1"><img class="imagenes" src="img/productos/menos.png" alt="restar"></button>
-                        <button type="submit" name="opcion" value="borrar"><img class="imagenes" src="img/productos/papelera.png" alt="borrar"></button>
-                        <input type="hidden" name="nombre" value="<?=$valor['nombre'] ?>">
-                    </form>
-                </div>
-                <?php endforeach ?>
+        <div id="cesta">
+            <h1>Cesta de la compra</h1>
+            <ul>
+                <?php foreach ($_SESSION as $nombre => $valor): ?>
+                <?php if(isset($nombre)): ?>
+                <li><?= $nombre ?> : <?= $valor ?></li>
                 <?php endif ?>
-            </div>
+                <?php endforeach ?>
+            </ul>
+            <a href="javascript:history.back()"><button>Atras</button></a>
         </div>
-        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <footer id="sticky-footer" class="py-4 bg-dark text-white-50 ">
             <div class="container text-center">
                 <small>Copyright &copy; Your Website</small>
             </div>            
