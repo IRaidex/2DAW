@@ -19,17 +19,15 @@ session_start();
 
         <style>
 
-            .row > div{
+            .row{
                 text-align: center;
-                margin: 3%;
-
                 padding: 3%;
             }
             .header{
                 font-size: 75px;
                 background: url('img/hero.jpg');
                 background-size: cover;
-                color: black;
+                color: #462ee0;
                 margin: 0;
                 padding: 3.3em;
             }
@@ -39,13 +37,18 @@ session_start();
             }
 
             img{
-                width: 500px;
+                width: 350px;
                 height: 350px;
             }
 
             .imagenes{
                 width: 50px;
                 height: 50px;
+            }
+            .galeria{
+                padding: 1%;
+                text-align:center;
+
             }
             .footer{
                 justify-content: space-around;
@@ -65,9 +68,9 @@ session_start();
     <body>
 
         <div class="jumbotron text-center header">
-
-            <span id="cabecera">NORMAL</span> 
-
+<!--
+            <span id="cabecera">Fruteria</span> 
+-->
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <img src="img/logo.png" alt="kfc" id="kfc">
@@ -85,39 +88,16 @@ session_start();
                 </ul>
             </div>
         </nav>
-        <div class="container-fluid">
-            <div class="row justify-content-center text-light bg-info">
-                <div class="col-md-5 col-sm-12 bg-dark ">
-
-                    <img src="img/dodo2.jpg" alt="dodo">
-                    <h1>Dodo</h1>
-                    <p>El Dodo es una de las criaturas en ARK: Survival Evolved. Se utiliza principalmente como una especie de 'pollo', que produce una gran cantidad de huevos que se pueden comer para una gran cantidad de alimento.</p>
-
-                </div>
-                <div  class="col-md-5 col-sm-12 bg-dark ">
-
-                    <img src="img/nutria2.jpg" alt="nutria">
-                    <h1>Nutria</h1>
-                    <p>La 'Nutria' es una de las Criaturas en ARK: Survival Evolved que se expecializan en pescar y encontrar perlas. Las nutrias pasan toda su vida en el agua, lanzándose rápidamente sin alejarse demasiado de su origen. Se dirigen a los peces, desde los que pueden cosechar pescado crudo, perlas de sílice y perlas negras. </p>
-
-                </div>
-                <div  class="col-md-5 col-sm-12 bg-dark ">
-
-                    <img src="img/tortuga.jpg" alt="nutria">
-                    <h1>Carbonemys</h1>
-                    <p>El Carbonemys a menudo simplemente se conoce como Tortuga, es una especie de criatura en ARK: Survival Evolved. Carbonemys es una criatura neutral, y luchará solo si es atacada o si tomas uno de sus huevos. Como el Stegosaurus defenderán a otros Carbonemys. Al ser atacado, Carbonemys puede lanzar un ataque bastante castigador, pero nada demasiado fatal. Su velocidad de movimiento extremadamente baja les permite ser fácilmente atacados y sacrificados por carne desde el principio, sin embargo, tienen una gran cantidad de salud y requieren bastante tiempo para matar. </p>
-
-                </div>
-                <div  class="col-md-5 col-sm-12 bg-dark ">
-
-                    <img src="img/daedon.jpg" alt="nutria">
-                    <h1>Daeodon</h1>
-                    <p>El Daeodon (dee-o-don) es una de las criaturas en ARK: Survival Evolved. Los viajeros de Ark normalmente encontrarán a Daeodon viajando en manadas, devorando todo lo que esté a la vista. Una vez que se inicia el combate, uno o, a veces, todo el paquete producirá un efecto de feromona para mejorar la regeneración de salud de las criaturas amigas. </p>
-
+        <div class="container-fluid ">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                   
+                   
+                   
                 </div>
             </div>
         </div>
-        <footer id="sticky-footer" class="py-4 bg-dark text-light">
+        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
             <div class="container text-center">
                 <small>Copyright &copy; Your Website</small>
             </div>            

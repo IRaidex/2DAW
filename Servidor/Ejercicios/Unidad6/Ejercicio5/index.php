@@ -80,14 +80,11 @@ session_start();
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="badulaque.php">Inicio <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="carrito.php">Registro</a>
+                        <a class="nav-link" href="regristro.php">Registro/Login</a>
                     </li>                    
-                    <li class="nav-item active">
-                        <a class="nav-link" href="carrito.php">Login</a>
-                    </li>
                 </ul>
             </div>
         </nav>
