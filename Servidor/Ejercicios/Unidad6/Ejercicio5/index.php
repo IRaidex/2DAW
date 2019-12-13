@@ -8,7 +8,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Ark</title>
+        <title>ARK Evolved</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -35,16 +35,6 @@ session_start();
             #cabecera{
                 font-size: 100px;
             }
-
-            img{
-                width: 350px;
-                height: 350px;
-            }
-
-            .imagenes{
-                width: 50px;
-                height: 50px;
-            }
             .galeria{
                 padding: 1%;
                 text-align:center;
@@ -68,8 +58,8 @@ session_start();
     <body>
 
         <div class="jumbotron text-center header">
-<!--
-            <span id="cabecera">Fruteria</span> 
+            <!--
+<span id="cabecera">Fruteria</span> 
 -->
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -83,7 +73,10 @@ session_start();
                         <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="regristro.php">Registro/Login</a>
+                        <a class="nav-link" href="regristro.php">Registro</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="regristro.php">Login</a>
                     </li>                    
                 </ul>
             </div>
@@ -95,7 +88,7 @@ session_start();
                 </div>
             </div>
         </div>
-        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <footer id="sticky-footer" class="py-4 bg-dark text-white">
             <div class="container text-center">
                 <small>Copyright &copy; Your Website</small>
             </div>            

@@ -8,7 +8,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Ark</title>
+        <title>ARK Evolved</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -35,16 +35,6 @@ session_start();
             #cabecera{
                 font-size: 100px;
             }
-
-            img{
-                width: 350px;
-                height: 350px;
-            }
-
-            .imagenes{
-                width: 50px;
-                height: 50px;
-            }
             .galeria{
                 padding: 1%;
                 text-align:center;
@@ -68,8 +58,8 @@ session_start();
     <body>
 
         <div class="jumbotron text-center header">
-<!--
-            <span id="cabecera">Fruteria</span> 
+            <!--
+<span id="cabecera">Fruteria</span> 
 -->
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -83,21 +73,52 @@ session_start();
                         <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="regristro.php">Registro/Login</a>
-                    </li>                    
+                        <a class="nav-link" href="regristro.php">Registro</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="regristro.php">Login</a>
+                    </li>                       
                 </ul>
             </div>
         </nav>
         <div class="container-fluid ">
             <div class="row justify-content-center">
-                <div class="col-md-12">
-                   
-                   
-                   
+                <div class="col-md-6 col-sm-12 bg-light p-5">
+                    <h1 class="text-info font-italic">Registro</h1>
+                    <form action="insert.php" method="post" class="text-left p-5">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" placeholder="Ej: Alejandro" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido1">Primer Apellido</label>
+                            <input type="text" name="apellido1" placeholder="Ej: Salcedo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido2">Segundo Apellido</label>
+                            <input type="text" name="apellido2" placeholder="Ej: Santamaria" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="fNac">Fecha de Nacimiento</label>
+                            <input type="date" name="fNac" class="form-control">
+                        </div>                        
+                        <div class="form-group">
+                            <label for="user">Usuario</label>
+                            <input type="text" name="user" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Contraseña</label>
+                            <input type="password" name="pass" class="form-control">
+                        </div>
+                        <div class="text-center pt-5">
+                            <input type="submit" name="enviar" value="Enviar" class="btn btn-info">
+                            <input type="reset" name="borrar" value="Resetear" class="btn btn-info">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <footer id="sticky-footer" class="py-4 bg-dark text-white">
             <div class="container text-center">
                 <small>Copyright &copy; Your Website</small>
             </div>            

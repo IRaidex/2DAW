@@ -8,7 +8,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Ark</title>
+        <title>ARK Evolved</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -42,11 +42,6 @@ session_start();
                 width: 500px;
                 height: 350px;
             }
-
-            .imagenes{
-                width: 50px;
-                height: 50px;
-            }
             .footer{
                 justify-content: space-around;
             }
@@ -78,7 +73,10 @@ session_start();
                         <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="regristro.php">Registro/Login</a>
+                        <a class="nav-link" href="regristro.php">Registro</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="regristro.php">Login</a>
                     </li>                    
                 </ul>
             </div>
