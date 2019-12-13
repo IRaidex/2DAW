@@ -1,10 +1,10 @@
-var personajes = JSON.parse(personajes);
 
 $(function() {
+    var todos = JSON.parse(personajes);
     var cantidad = 5;
     var veces= 0;
-
-    cargarPj(personajes,cantidad,veces);
+    
+    cargarPj(todos,cantidad,veces);
     veces++;
 
     document.addEventListener("scroll",eliminar);
@@ -15,18 +15,18 @@ $(function() {
         var alturaVisible=window.innerHeight;
 
         if(altura+alturaVisible>=alturaWeb){
-            cargarPj(personajes,cantidad,veces);
+            cargarPj(todos,cantidad,veces);
             veces++;
         }
     }
 });
 
 
-function cargarPj(personajes,cantidad,veces){
+function cargarPj(todos,cantidad,veces){
 
     var cantidadFinal=0;
-    if(cantidad*(veces+1)-1 > personajes.length){
-        cantidadFinal=personajes.length;
+    if(cantidad*(veces+1)-1 > todos.length){
+        cantidadFinal=todos.length;
     }else{
         cantidadFinal=cantidad*(veces+1);
     }
@@ -35,27 +35,35 @@ function cargarPj(personajes,cantidad,veces){
     
     for(var i=cantidad*veces; i<cantidadFinal; i++) {
         
+        console.log(todos[i]);
         
-        var article = $('<article>').attr('class','personaje');
-        article.append($('div').attr('class','nombre').html(personajes[i].name));
+        var article = $('<article>').addClass('personaje');
+        article.append($('<div>').attr('class','nombre').html(todos[i].name));
         
-        var divAvatar = $('div').attr('class','avatar');
-        divAvatar.append($('img').attr({ alt: personajes[i].name , src: pesonajes[i].image}));
+        var divAvatar = $('<div>').attr('class','avatar');
+        divAvatar.append($('<img>').attr({ alt: todos[i].name , src: todos[i].image}));
         article.append(divAvatar);
         
-        var divDatos = $('div').addClass('datos');
+        var divDatos = $('<div>').addClass('datos');
         article.append(divDatos);
         
-        var divInfo = $('div').addClass('info');
-        divInfo.append('Especie: '+personajes[i].species+'<br>'+'Genero: '+personajes[i].gender);
-        divInfo.append($()'<img src="'+personajes[i].gender+'.png" class="genero">');
+        var divInfo = $('<div>').addClass('info');
+        divInfo.append('Especie: '+todos[i].species+'<br>'+'Genero: '+todos[i].gender);
+        divInfo.append($('<img>').attr({src: todos[i].gender+'.png' , class: "genero"}));
+        divInfo.append('<br>Origin: '+todos[i].origin.name);
+        divInfo.append('<br>Estado: ');
+        divInfo.append($('<span>').addClass('alive').html(todos[i].status));
+        divInfo.append('<br>Episodios: '+todos[i].episode.length);
         
+        divDatos.append(divInfo);
+        article.append(divDatos);
         
         
        $('section').append(article); 
+/*
+//        
         
-        
-        /*var article = document.createElement('article');
+        var article = document.createElement('article');
         article.setAttribute('class', 'personaje');
 
         var div1 = document.createElement('div');
@@ -86,8 +94,9 @@ function cargarPj(personajes,cantidad,veces){
         article.appendChild(div3);
 
         var section = document.getElementsByTagName('section');
-        section[0].appendChild(article);*/
+        section[0].appendChild(article);
 
+*/
 
     }
 

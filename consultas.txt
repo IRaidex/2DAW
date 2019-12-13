@@ -1,0 +1,124 @@
+db.restaurantes.insert({"direccion":{
+
+"edificio":3,
+"coord":[140,375],
+"calle":"Calle de Jeronimo",
+"codigoPostal":46007
+
+},
+
+"barrio":"Valencia",
+"tipoCocina":"Italiana",
+"nombre":"El Astronomo",
+"idRestaurante":10232})
+
+> db.restaurantes.insert({"direccion":{
+...
+... "edificio":3,
+... "coord":[140,375],
+... "calle":"Calle de Jeronimo",
+... "codigoPostal":46007
+...
+... },
+...
+... "barrio":"Valencia",
+... "tipoCocina":"Italiana",
+... "nombre":"El Astronomo",
+... "idRestaurante":10232})
+WriteResult({ "nInserted" : 1 })
+
+
+
+> db.restaurantes.insert({"direccion":{
+...
+... "edificio":2,
+... "coord":[70,30],
+... "calle":"Calle de San Vicente Martir",
+... "codigoPostal":46002
+...
+... },
+...
+... "barrio":"Canovas",
+... "tipoCocina":"Alemana",
+... "nombre":"Orio",
+... "idRestaurante":43918})
+WriteResult({ "nInserted" : 1 })
+
+> db.restaurantes.insert({"direccion":{
+...
+... "edificio":1,
+... "coord":[90,30],
+... "calle":"Marina Real Juan Carlos 1",
+... "codigoPostal":46023
+...
+... },
+...
+... "barrio":"El Cabanyal",
+... "tipoCocina":"Valenciana",
+... "nombre":"Restaurante Panorama",
+... "idRestaurante":42002})
+WriteResult({ "nInserted" : 1 })
+
+
+
+>   db.restaurantes.insert({"direccion":{
+...
+... "edificio":1,
+... "coord":[70,120],
+... "calle":"Calle de Bonaire 23",
+... "codigoPostal":46120
+...
+... },
+...
+... "barrio":"Aldaia",
+... "tipoCocina":"Mixta",
+... "nombre":"Ostras Pedrin",
+... "idRestaurante":1245})
+WriteResult({ "nInserted" : 1 })
+
+
+> db.restaurantes.insert({"direccion":{
+...
+... "edificio":107,
+... "coord":[123,400],
+... "calle":"Calle de Trafalgar",
+... "codigoPostal":46023
+...
+... },
+...
+... "barrio":"Canovas",
+... "tipoCocina":"Portuguesa",
+... "nombre":"Trafalgar Bistro",
+... "idRestaurante":300421})
+WriteResult({ "nInserted" : 1 })
+
+
+
+
+
+
+db.restaurantes.find({},{_id,nombre,direccion})
+
+
+
+
+
+
+
+db.restaurantes.find({idRestaurante},$lt:10000).pretty()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
