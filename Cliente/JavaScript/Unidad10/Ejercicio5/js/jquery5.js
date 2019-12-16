@@ -1,7 +1,8 @@
 $(function() {
 
     $('a').click(function(){
-        $(this).css('background-color','green'); 
+        $(this).css('background-color','green');
+        $('a').css('background-color','none');
     });
 
     var links = document.getElementsByClassName("nav-link");
