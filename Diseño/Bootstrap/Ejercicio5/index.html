@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <style>
+
+            .row{
+                text-align: center;
+                padding: 3%;
+            }
+            .header{
+                background-color: #D314D3;
+                font-size: 75px;
+                background: url('fondo.png')center;
+                color: fuchsia;
+                margin: 0;
+            }
+
+            #cabecera{
+                font-size: 100px;
+            }
+
+            img{
+                width: 350px;
+                height: 350px;
+                transition: transform 3s , opacity 3s;
+
+            }
+            img:not(:hover){
+                transform: rotate(7turn);
+                width: 400px;
+                height: 400px;
+                opacity: 0.5;
+
+            }
+            .galeria{
+                padding: 1%;
+                text-align:center;
+
+            }
+            .footer{
+                justify-content: space-around;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="jumbotron text-center header">
+            <span id="cabecera">GAME</span>
+            <p>Probando Bootstrap</p> 
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid ">
+            <div class="row justify-content-center">
+                <div class="col-md-4-offset-md-2 galeria">
+                    <img src="ds3.png" alt="dark souls 3">
+                    <p>Dark Souls 3</p>
+                    <button>Comprar</button>
+                </div>
+                <div class="col-md-4-offset-md-2 galeria">
+                    <img src="tlg.png" alt="dark souls 3">
+                    <p>The Last Guardian</p>
+                    <button>Comprar</button>                
+                </div>  
+                <div class="col-md-4-offset-md-2 galeria">
+                    <img src="game1.png" alt="dark souls 3">
+                    <p>Imagina ser veterinaria</p>
+                    <button>Comprar</button>                
+                </div>  
+                <div class="col-md-4-offset-md-2 galeria">
+                    <img src="lastofus.png" alt="dark souls 3">
+                    <p>The Last Of Us</p>
+                    <button>Comprar</button>               
+                </div>  
+                <div class="col-md-4-offset-md-2  galeria">
+                    <img src="re4.png" alt="dark souls 3">
+                    <p>Resident Evil 4</p>
+                    <button>Comprar</button>                
+                </div>  
+                <div class="col-md-4-offset-md-2 galeria">
+                    <img src="bd3.png" alt="dark souls 3">
+                    <p>Bordelands 3</p>
+                    <button>Comprar</button>                
+                </div>
+            </div>
+        </div>
+        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+            <div class="container text-center">
+                <small>Copyright &copy; Your Website</small>
+            </div>            
+            <div class="container text-center">
+                <small>Email: game@gmail.com</small>
+            </div>
+            <div class="container text-center">
+                <small>Telefono: 961331449</small>
+            </div>
+        </footer>
+
+    </body>
+</html>
