@@ -31,6 +31,15 @@
             img{
                 width: 350px;
                 height: 350px;
+                transition: transform 3s , opacity 3s;
+                
+            }
+            img:hover{
+                transform: rotate(7turn);
+                width: 400px;
+                height: 400px;
+                opacity: 0.5;
+                
             }
             .galeria{
                 padding: 1%;
@@ -39,12 +48,6 @@
             }
             .footer{
                 justify-content: space-around;
-            }
-            div div div{
-                transition: transform 3s;
-            }
-            .container-fluid:hover div div{
-                transform: rotate(3turn);
             }
         </style>
     </head>
@@ -98,7 +101,7 @@
                     <p>The Last Of Us</p>
                     <button>Comprar</button>               
                 </div>  
-                <div class="col-md-4-offset-md-2 galeria">
+                <div class="col-md-4-offset-md-2  galeria">
                     <img src="re4.png" alt="dark souls 3">
                     <p>Resident Evil 4</p>
                     <button>Comprar</button>                
