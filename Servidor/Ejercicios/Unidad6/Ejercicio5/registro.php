@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if(isset($_SESSION['user'])){
+     header('Location: index.php'); 
+}
+
 if(isset($_POST['enviar'])){
     if($_POST['nombre'] != "" || $_POST['apellido1'] != "" || $_POST['apellido2'] != "" || $_POST['fNac'] || $_POST['user'] != "" || $_POST['pass'] != ""){
 

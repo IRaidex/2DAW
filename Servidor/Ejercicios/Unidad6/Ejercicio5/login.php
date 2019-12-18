@@ -1,7 +1,10 @@
 <?php
 session_start();
+if(isset($_SESSION['user'])) {
+    header('Location: index.php'); 
+}
 
-if(isset($_POST['enviar'])){
+ if(isset($_POST['enviar'])){
 
     if($_POST['user'] != "" || $_POST['pass'] != ""){
 
@@ -12,37 +15,27 @@ if(isset($_POST['enviar'])){
             $consulta->bindParam(1, $_POST['user']);
             $consulta->bindParam(2, $_POST['pass']);
             $consulta->execute();
-            
+
             $resultado=$consulta->fetch();
-            
+
             if($resultado != null){
-                
+
                 $_SESSION['user'] = $_POST['user'];
                 $_SESSION['pass'] = $_POST['pass'];
                 $_SESSION['rol'] = $resultado[0];
-                
-                print_r( $resultado);
-                
-                if($resultado[0] == "user"){
-                    
-                    echo "2";
-                    
-                    header('Location: normal.php');
-                    
-                }else if($resultado[0] == "admin"){
-                    
-                    header('Location: admin.php');
-                    
-                }
-                
+
+                header('Location: index.php');
+
             }
-            
-        } catch (PDOException $e) {
-            echo 'Falló la conexión: ' . $e->getMessage();
-        }
 
+        
 
+    } catch (PDOException $e) {
+        echo 'Falló la conexión: ' . $e->getMessage();
     }
+
+
+}
 
 }
 
@@ -102,13 +95,12 @@ if(isset($_POST['enviar'])){
         </style>
     </head>
     <body>
-    <?php include"cabecera.php" ?>
-        
+        <?php include"cabecera.php" ?>
         <div class="container-fluid ">
             <div class="row justify-content-center">
                 <div class="col-md-6 col-sm-12 bg-light p-5">
                     <h1 class="text-info font-italic">Login</h1>
-                    <form action="#" method="post" class="text-left p-5">            
+                    <form action="" method="post" class="text-left p-5">   
                         <div class="form-group">
                             <label for="user">Usuario</label>
                             <input type="text" name="user" class="form-control">
