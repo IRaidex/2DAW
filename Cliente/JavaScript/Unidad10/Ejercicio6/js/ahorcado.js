@@ -11,9 +11,11 @@ $(function() {
         }
     });
 
+    $('#opciones').show();
+
     //Muestro el input para que meta la palabra manualmente.
     $('#manual').click(function(){
-        $('#partidaPersonalizada').css('display','block');
+        $('#partidaPersonalizada').hide();
     })
 
     //Evito el submit , compruebo que la palabra tiene longitud mayo a 0 y llamo a la funcion empezarPartida
@@ -30,12 +32,13 @@ $(function() {
     //Saco una palabra aleatoriamente de la BD y llamo a la funcion empezarPartida
     $('#bbdd').click(function(){
         $('#partidaPersonalizada').hide();
-        $.ajax('palabra.php',{
-            success:function(data){
-                data = JSON.parse(data);
-                empezarPartida(data[0]);
-            }
-        });
+        $.post({url: 'palabra.php',
+                data: $('#opciones').serialize(),
+                success: function(data){
+                    console.log(data);
+                    empezarPartida(data);
+                }
+               });
     });
 
 
@@ -47,6 +50,7 @@ $(function() {
         $('#laPalabra').show(); //Mostramos el input Solucion 
         $('#filaLetras ').empty(); //Vaciamos los td que con tienen la palabra A-H-O-R-C-A-D-O
         for(var i=0 ; i<palabra.length ; i++){
+       
             $('#filaLetras ').append($('<td>')); //Creamos tantos td como letras tiene la palabra
         }
         $('.grid-letra').click(function(){ //Añadimos un evento click a las letras del abecedario (grid-letra)
@@ -68,7 +72,7 @@ $(function() {
                     $('#partida').children().attr('src','img/'+j+'.png');
                     $('#partida').show();
                 }else if(j==9){  //Si ya no tiene intentos llamamos a la funcion finalizarPartida
-                    finalizarPartida(palabra,j); //
+                    finalizarPartida(palabra,false); //
                 }
             }
         });
@@ -88,36 +92,30 @@ $(function() {
                 }
             }
             if(igual == true){ //Si es correcta llamamos a la funcion finalizarPartida 
-                finalizarPartida(palabra,j); 
-            }else{ //Sino es acertada cambiamos la foto por la siguiente y sumamos un intento
-                if(j!=9){ 
-                    j++;
-                    $('#partida').hide();
-                    $('#partida').children().attr('src','img/'+j+'.png');
-                    $('#partida').show();
-                }else if(j==9){  //Si ya no tiene intentos llamamos a la funcion finalizarPartida y ocultamos el formulario #laPalabra
-                    finalizarPartida(palabra,j);
-                    $('#laPalabra').hide();
-                }
+                finalizarPartida(palabra,true); 
+            }else{ //Si no es correcta llamamos a la funcion finalizarPartida 
+                finalizarPartida(palabra,false)
             }
         });
     }
     //Funcion con la que finalizamos los eventos y terminamos la partida
-    function finalizarPartida(palabra,veces){
+    function finalizarPartida(palabra,intento){
         $('.grid-letra').off();
         for(var i=0 ; i<palabra.length ; i++){
             $('#filaLetras td:nth-child('+(i+1)+')').append(palabra[i]); //Rellenamos los td con la palabra aleatoria
         }
-        if(veces==9){
+        if(intento==false){
+            $('#partida').hide();
+            $('#partida').children().attr('src','img/9.png');
+            $('#partida').show();
             $('#filaLetras ').css('background-color','red'); //Si pierde la partida pintamos de rojo el fondo de lso td y la foto
-             $('#partida').css('border','6px solid red');
-            $('#partida').attr('border-color','red');
+            $('img').css('border','6px solid red');
         }else{
 
             $('#filaLetras ').css('background-color','green'); //Si gana la partida pintamos de verde el fondo de los td y la foto
             $('#partida').hide();
-            $('#partida').css('border','6px solid green');
-            $('#partida').css('border-color','green');
+            $('#laPalabra').hide();
+            $('img').css('border','6px solid green');
             $('#partida').children().attr('src','img/win.png'); 
             $('#partida').show(); //Ocultamos el formulario #laPalabra y mostramos la foto ganadora
         }
