@@ -27,24 +27,52 @@
             #cabecera{
                 font-size: 100px;
             }
-
             img{
-                width: 350px;
-                height: 350px;
+                width: 250px;
+                height: 250px;
             }
+
             .galeria{
                 padding: 1%;
-				text-align:center;
+                text-align:center;
 
             }
             .footer{
                 justify-content: space-around;
             }
-            div div div{
-                transition: transform 3s;
+
+            .card-container {
+                cursor: pointer;
+                height: 250px;
+                perspective: 600;
+                position: relative;
+                width: 250px;
             }
-            .container-fluid:hover div div{
-                transform: rotate(3turn);
+            .card {
+                height: 100%;
+                position: absolute;
+                transform-style: preserve-3d;
+                transition: all 1s ease-in-out;
+                width: 100%;
+            }
+            .card:hover {
+                transform: rotateY(180deg) translateY(100px);
+            }
+            .card .side {
+                backface-visibility: hidden;
+                border-radius: 20px;
+                height: 100%;
+                position: absolute;
+                overflow: hidden;
+                width: 100%;
+            }
+
+            .card .back {
+                background: #eaeaed;
+                color: #0087cc;
+                line-height: 150px;
+                text-align: center;
+                transform: rotateY(180deg);
             }
         </style>
     </head>
@@ -76,40 +104,43 @@
                 </ul>
             </div>
         </nav>
-        <div class="container-fluid ">
-            <div class="row justify-content-center">
-                <div class="col-md-4-offset-md-2 galeria">
-                    <img src="ds3.png" alt="dark souls 3">
-                    <p>Dark Souls 3</p>
-                    <button>Comprar</button>
+        <section class="container">
+            <div class="row ">
+                <div class="col-md-4 col-sm-6 ">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="side">
+                                <img src="ds3.png" alt="ds3">
+
+                            </div>
+                            <div class="side back">Dark Souls 3</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4-offset-md-2 galeria">
-                    <img src="tlg.png" alt="dark souls 3">
-                    <p>The Last Guardian</p>
-                    <button>Comprar</button>                
-                </div>  
-                <div class="col-md-4-offset-md-2 galeria">
-                    <img src="game1.png" alt="dark souls 3">
-                    <p>Imagina ser veterinaria</p>
-                    <button>Comprar</button>                
-                </div>  
-                <div class="col-md-4-offset-md-2 galeria">
-                    <img src="lastofus.png" alt="dark souls 3">
-                    <p>The Last Of Us</p>
-                    <button>Comprar</button>               
-                </div>  
-                <div class="col-md-4-offset-md-2 galeria">
-                    <img src="re4.png" alt="dark souls 3">
-                    <p>Resident Evil 4</p>
-                    <button>Comprar</button>                
-                </div>  
-                <div class="col-md-4-offset-md-2 galeria">
-                    <img src="bd3.png" alt="dark souls 3">
-                    <p>Bordelands 3</p>
-                    <button>Comprar</button>                
+                <div class="col-md-4 col-sm-6 imagenes text-center">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="side">
+                                <img src="re4.png" alt="ds3">
+
+                            </div>
+                            <div class="side back">Resident Evil 4</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 imagenes">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="side">
+                                <img src="tlg.png" alt="ds3">
+
+                            </div>
+                            <div class="side back">The Last Guardian</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
         <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
             <div class="container text-center">
                 <small>Copyright &copy; Your Website</small>
