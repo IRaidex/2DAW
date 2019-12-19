@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-12-2019 a las 20:43:40
+-- Tiempo de generación: 19-12-2019 a las 00:04:14
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -34,7 +34,7 @@ CREATE TABLE `users` (
   `apellido2` varchar(20) DEFAULT NULL,
   `fNac` date DEFAULT NULL,
   `usuario` varchar(20) DEFAULT NULL,
-  `contrasenya` varchar(20) DEFAULT NULL,
+  `contrasenya` varchar(100) DEFAULT NULL,
   `rol` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -43,11 +43,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`nombre`, `apellido1`, `apellido2`, `fNac`, `usuario`, `contrasenya`, `rol`) VALUES
-('Alejandro', 'Salcedo', 'Santamaria', '1996-02-13', 'alex', 'alex', 'admin'),
-('Jorge', 'Jimenez', 'Martinez', '1999-07-27', 'jjomega', 'jjomega', 'user'),
-('Pau', 'Llorens', 'Martinex', '1999-01-21', 'pau2199', 'pau2199', 'user'),
-('rafa', 'rafa', 'rafa', '1996-02-13', 'rafa', 'rafa', 'user'),
-('Sandra', 'Alcudia', 'Palomo', '1996-12-03', 'samkay', 'samkay', 'user');
+('Alejandro', 'Salcedo', 'Santamaria', '1996-02-13', 'alex', '$2y$10$eN3vt/dBajYwWpjkV0QefeR4mywl.nmiP6OR.nHAClyAf.nblJkRe', 'admin'),
+('Jorge', 'Jimenez', 'Martine', '1999-07-14', 'jorge', '$2y$10$.mh.phI9jW8a6.er9cVSHOGVkb4DBN1lMj2z9.iTen/TDQGk.usEG', 'user'),
+('Nacho', 'Salcedo', 'Santamaria', '2002-11-21', 'nacho', '$2y$10$TNC66XM8o1LhhXeAc6R.9O6OGnueG6jRzolXqri/4kiRk.8831kGK', 'user'),
+('Pau', 'Llorens', 'Martinez', '1999-01-21', 'pau', '$2y$10$4TI.c13lpQg/3JfTmZ3OG.8VdwEOsIJ7L.0D2tedoKX66KMTD3ODG', 'user'),
+('Rafa', 'Mora', 'Pacheco', '1969-11-21', 'rafa', '$2y$10$UBDH2HuRlNd7UeeK5Td47uWPwgvXGXVbomDDFZmnQiPVMar5yS/Sa', 'user'),
+('Sandra', 'Alcudia', 'Palomo', '1996-12-03', 'samkay', '$2y$10$KcrK6LCUmJPVMav7Gawi4OvwShni1coNAHJyb3O...SXOkBbgGDau', 'user');
 
 --
 -- Índices para tablas volcadas

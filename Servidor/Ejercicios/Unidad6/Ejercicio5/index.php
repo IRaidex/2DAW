@@ -16,46 +16,8 @@ session_start();
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-        <style>
-
-            .row > div{
-                text-align: center;
-                margin: 3%;
-
-                padding: 3%;
-            }
-            .header{
-                font-size: 75px;
-                background: url('img/hero.jpg');
-                background-size: cover;
-                color: black;
-                margin: 0;
-                padding: 3.3em;
-            }
-
-            #cabecera{
-                font-size: 100px;
-            }
-
-            img{
-                width: 500px;
-                height: 350px;
-            }
-            .footer{
-                justify-content: space-around;
-            }
-            #rojo{
-                color: red;
-            }
-            #kfc{
-                width: 100px;
-                height: 75px;
-            }
-            nav{
-                font-size: 20px;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
+        
     </head>
     <body>
         <?php include"cabecera.php" ?>

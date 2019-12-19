@@ -4,95 +4,50 @@ if(isset($_SESSION['user'])) {
     header('Location: index.php'); 
 }
 
- if(isset($_POST['enviar'])){
+if(isset($_POST['enviar'])){
 
     if($_POST['user'] != "" || $_POST['pass'] != ""){
 
         require_once"conexion.php";
 
         try {
-            $consulta = $conexion->prepare('SELECT rol FROM users WHERE usuario = ? AND contrasenya = ?;');
+            $consulta = $conexion->prepare('SELECT usuario,rol,contrasenya FROM users WHERE usuario = ?;');
             $consulta->bindParam(1, $_POST['user']);
-            $consulta->bindParam(2, $_POST['pass']);
             $consulta->execute();
 
             $resultado=$consulta->fetch();
-
+         
             if($resultado != null){
-
-                $_SESSION['user'] = $_POST['user'];
-                $_SESSION['pass'] = $_POST['pass'];
-                $_SESSION['rol'] = $resultado[0];
-
-                header('Location: index.php');
-
+                if(password_verify($_POST['pass'], $resultado['contrasenya'])){
+                    $_SESSION['user'] = $_POST['user'];
+                    $_SESSION['rol'] = $resultado['rol'];
+                    header('Location: index.php');
+                }
+               
             }
 
-        
 
-    } catch (PDOException $e) {
-        echo 'Falló la conexión: ' . $e->getMessage();
+
+        } catch (PDOException $e) {
+            echo 'Falló la conexión: ' . $e->getMessage();
+        }
+
+
     }
 
-
 }
-
-}
-
-
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>ARK Evolved</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-        <style>
-
-            .row{
-                text-align: center;
-                padding: 3%;
-            }
-            .header{
-                font-size: 75px;
-                background: url('img/hero.jpg');
-                background-size: cover;
-                color: #462ee0;
-                margin: 0;
-                padding: 3.3em;
-            }
-
-            #cabecera{
-                font-size: 100px;
-            }
-            .galeria{
-                padding: 1%;
-                text-align:center;
-
-            }
-            .footer{
-                justify-content: space-around;
-            }
-            #rojo{
-                color: red;
-            }
-            #kfc{
-                width: 100px;
-                height: 75px;
-            }
-            nav{
-                font-size: 20px;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <?php include"cabecera.php" ?>
@@ -100,7 +55,7 @@ if(isset($_SESSION['user'])) {
             <div class="row justify-content-center">
                 <div class="col-md-6 col-sm-12 bg-light p-5">
                     <h1 class="text-info font-italic">Login</h1>
-                    <form action="" method="post" class="text-left p-5">   
+                    <form action="#" method="post" class="text-left p-5">   
                         <div class="form-group">
                             <label for="user">Usuario</label>
                             <input type="text" name="user" class="form-control">

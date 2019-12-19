@@ -2,14 +2,17 @@
 session_start();
 
 if(isset($_SESSION['user'])){
-     header('Location: index.php'); 
+    header('Location: index.php'); 
 }
+
 
 if(isset($_POST['enviar'])){
     if($_POST['nombre'] != "" || $_POST['apellido1'] != "" || $_POST['apellido2'] != "" || $_POST['fNac'] || $_POST['user'] != "" || $_POST['pass'] != ""){
 
         require_once"conexion.php";
-
+        $pass = $_POST['pass'];
+        $pass = password_hash($pass, PASSWORD_BCRYPT);
+        $_SESSION['pass'] = $pass;
         try {
 
             $consulta = $conexion->prepare('INSERT INTO users (nombre,apellido1,apellido2,fNac,usuario,contrasenya,rol) VALUES (?,?,?,?,?,?,?);');
@@ -18,7 +21,7 @@ if(isset($_POST['enviar'])){
             $consulta->bindParam(3, $_POST['apellido2']);
             $consulta->bindParam(4, $_POST['fNac']);
             $consulta->bindParam(5, $_POST['user']);
-            $consulta->bindParam(6, $_POST['pass']);
+            $consulta->bindParam(6, $pass);
             $consulta->bindValue(7, 'user');
 
             $consulta->execute();
@@ -30,6 +33,8 @@ if(isset($_POST['enviar'])){
     }
 }
 
+
+
 ?>
 
 
@@ -40,49 +45,11 @@ if(isset($_POST['enviar'])){
         <title>ARK Evolved</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-        <style>
-
-            .row{
-                text-align: center;
-                padding: 3%;
-            }
-            .header{
-                font-size: 75px;
-                background: url('img/hero.jpg');
-                background-size: cover;
-                color: #462ee0;
-                margin: 0;
-                padding: 3.3em;
-            }
-
-            #cabecera{
-                font-size: 100px;
-            }
-            .galeria{
-                padding: 1%;
-                text-align:center;
-
-            }
-            .footer{
-                justify-content: space-around;
-            }
-            #rojo{
-                color: red;
-            }
-            #kfc{
-                width: 100px;
-                height: 75px;
-            }
-            nav{
-                font-size: 20px;
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <?php include"cabecera.php" ?>
@@ -115,6 +82,7 @@ if(isset($_POST['enviar'])){
                             <label for="pass">Contraseña</label>
                             <input type="password" name="pass" class="form-control">
                         </div>
+                       
                         <div class="text-center pt-5">
                             <input type="submit" name="enviar" value="Enviar" class="btn btn-info">
                             <input type="reset" name="borrar" value="Resetear" class="btn btn-info">
