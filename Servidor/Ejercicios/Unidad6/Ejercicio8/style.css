@@ -1,0 +1,22 @@
+.row > div{
+    text-align: center;
+    margin: 3%;
+
+    padding: 3%;
+}
+.jumbotron{
+    background: url('img/hero.jpg');
+}
+
+
+img{
+    width: 500px;
+    height: 350px;
+}
+.footer{
+    
+}
+#kfc{
+    width: 75px;
+    height: 50px;
+}
