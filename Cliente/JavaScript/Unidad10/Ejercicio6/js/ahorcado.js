@@ -15,7 +15,7 @@ $(function() {
 
     //Muestro el input para que meta la palabra manualmente.
     $('#manual').click(function(){
-        $('#partidaPersonalizada').hide();
+        $('#partidaPersonalizada').show();
     })
 
     //Evito el submit , compruebo que la palabra tiene longitud mayo a 0 y llamo a la funcion empezarPartida
@@ -50,7 +50,7 @@ $(function() {
         $('#laPalabra').show(); //Mostramos el input Solucion 
         $('#filaLetras ').empty(); //Vaciamos los td que con tienen la palabra A-H-O-R-C-A-D-O
         for(var i=0 ; i<palabra.length ; i++){
-       
+
             $('#filaLetras ').append($('<td>')); //Creamos tantos td como letras tiene la palabra
         }
         $('.grid-letra').click(function(){ //Añadimos un evento click a las letras del abecedario (grid-letra)
@@ -66,12 +66,12 @@ $(function() {
 
             }
             if(encontrada == false){ //Sino es acertada cambiamos la foto por la siguiente y sumamos un intento
-                if(j!=9){
+                if(j!=8){
                     j++;
                     $('#partida').hide();
                     $('#partida').children().attr('src','img/'+j+'.png');
                     $('#partida').show();
-                }else if(j==9){  //Si ya no tiene intentos llamamos a la funcion finalizarPartida
+                }else if(j==8){  //Si ya no tiene intentos llamamos a la funcion finalizarPartida
                     finalizarPartida(palabra,false); //
                 }
             }
@@ -101,7 +101,9 @@ $(function() {
     //Funcion con la que finalizamos los eventos y terminamos la partida
     function finalizarPartida(palabra,intento){
         $('.grid-letra').off();
+        $('#filaLetras ').empty();
         for(var i=0 ; i<palabra.length ; i++){
+            $('#filaLetras ').append($('<td>'));
             $('#filaLetras td:nth-child('+(i+1)+')').append(palabra[i]); //Rellenamos los td con la palabra aleatoria
         }
         if(intento==false){
