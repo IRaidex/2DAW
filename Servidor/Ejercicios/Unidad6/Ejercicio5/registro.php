@@ -82,7 +82,11 @@ if(isset($_POST['enviar'])){
                             <label for="pass">Contraseña</label>
                             <input type="password" name="pass" class="form-control">
                         </div>
-                       
+                        <div class="form-group">
+                            <img src="captcha.php" alt="captcha" class="captcha">
+                            <input type="text" name="captcha" class="form-control">
+                        </div>
+
                         <div class="text-center pt-5">
                             <input type="submit" name="enviar" value="Enviar" class="btn btn-info">
                             <input type="reset" name="borrar" value="Resetear" class="btn btn-info">
