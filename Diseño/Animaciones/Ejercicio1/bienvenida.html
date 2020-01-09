@@ -1,44 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-h1{
-    text-align: center;
-  animation: shake 2s;
-  animation-iteration-count: infinite;
-}
+    <head>
+        <style>
+            h1{
+                text-align: center;
+                animation: shake 2s;
+                animation-iteration-count: infinite;
+            }
 
-@keyframes shake {
-    
-  0% { transform: scale(1); }
-  100% { transform: scale(5); margin-top: 5%;} 
-    
-    
-  /*10% { transform: scale(1); }
-  15% { transform: scale(1.5); }
-  20% { transform: scale(2); }
-  25% { transform: scale(2.5); }
-  30% { transform: scale(3); }
-  35% { transform: scale(3.5); }
-  40% { transform: scale(4); }
-  45% { transform: scale(4.5); }
-  50% { transform: scale(5); }
-  55% { transform: scale(4.5); }
-  60% { transform: scale(4); }
-  65% { transform: scale(3.5); }
-  70% { transform: scale(3); }
-  75% { transform: scale(2.5); }
-  80% { transform: scale(2); }
-  85% { transform: scale(1.5); }
-  90% { transform: scale(1); }*/
-    
+            @keyframes shake {
 
-}
-</style>
-</head>
-<body>
+                0% { transform: scale(1); }
+                50% { transform: scale(9); margin-top: 10%;} 
+                100% { transform: scale(1); }
 
-<h1>Bienvenid@!</h1>
+            }
+            h1:hover{
+                animation-play-state: paused;
+            }
+        </style>
+    </head>
+    <body>
 
-</body>
+        <h1>Bienvenid@!</h1>
+
+    </body>
 </html>
