@@ -8,13 +8,13 @@ require_once __DIR__ . '/../app/Controller.php';
 /* array asociativo cuya función es definir una tabla para mapear
 * (asociar), rutas en acciones de un controlador.
 * Esta tabla será utilizada para saber qué acción se debe disparar */
-$map = ([
+$map = [
 	'inicio' => ['controller' =>'Controller', 'action' =>'inicio'],
 	'listar' => ['controller' =>'Controller', 'action' =>'listar'],
 	'insertar' => ['controller' =>'Controller', 'action' =>'insertar'],
 	'buscar'=>['controller' =>'Controller', 'action' =>'buscarPorNombre'],
 	'ver' => ['controller' =>'Controller', 'action' =>'ver']
-]);
+];
 
 // Parseo de la ruta
 if (isset($_GET['ctl'])) {
