@@ -25,7 +25,7 @@ var portalgun;
 var portal;
 var plataforms;
 var cursors;
-var score;
+var score=0;
 var gameOver = false;
 var scoreText;
 var levelText;
@@ -46,7 +46,8 @@ function preload ()
 }
 
 function create ()
-{
+{   
+
     this.add.image(400,300 ,'fondo');
     plataforms = this.physics.add.staticGroup();
 
@@ -86,6 +87,26 @@ function create ()
 
     cursors= this.input.keyboard.createCursorKeys();
 
+    plumbus = this.physics.add.group({
+        key: 'plumbus',
+        repeat: 3
+    });
+
+    this.physics.add.collider(plataforms, plumbus);
+
+    plumbus.children.iterate(function (child){
+        createPlumbus(child);
+    });
+
+    this.physics.add.overlap(player,plumbus,collectPlumbus,null,this);
+    
+    portalgun = this.physics.add.image(Phaser.Math.Between(10, 790), posicionesY[Phaser.Math.Between(0, 2)], 'portalgun');
+    portal = this.physics.add.image(400, 400, 'portal');
+    portal.disableBody(true, true);
+    
+    this.physics.add.collider(plataforms, plumbus);
+    
+    scoreText = this.add.text(16, 54, 'Score: 0', { fontSize: '32px', fill: '#000'});
 }
 
 function update ()
@@ -93,12 +114,12 @@ function update ()
     if (cursors.left.isDown){
 
         player.anims.play('izquierda', true);
-        player.setVelocityX(-100);
+        player.setVelocityX(-130);
 
     }else if(cursors.right.isDown){
 
         player.anims.play('derecha', true);
-        player.setVelocityX(100);
+        player.setVelocityX(130);
 
     }else{
 
@@ -110,5 +131,21 @@ function update ()
     if (cursors.up.isDown && player.body.touching.down){
         player.setVelocityY(-350);
     }
+
+}
+
+function createPlumbus (plumbus){
+
+    plumbus.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+    plumbus.x = Phaser.Math.Between(10, 790);
+    plumbus.y = posicionesY[Phaser.Math.Between(0, 2)];
+}
+
+function collectPlumbus (player, plumbus){
+
+    plumbus.disableBody(true, true);
+
+    score += 10 * nivel;
+    scoreText.setText('Score: '+ score);
 
 }
