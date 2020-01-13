@@ -27,7 +27,7 @@ var plataforms;
 var cursors;
 var score=0;
 var gameOver = false;
-var scoreText;
+var scoreText = '';
 var levelText;
 var nivel = 1;
 
@@ -99,14 +99,26 @@ function create ()
     });
 
     this.physics.add.overlap(player,plumbus,collectPlumbus,null,this);
-    
+
     portalgun = this.physics.add.image(Phaser.Math.Between(10, 790), posicionesY[Phaser.Math.Between(0, 2)], 'portalgun');
     portal = this.physics.add.image(400, 400, 'portal');
     portal.disableBody(true, true);
-    
+
     this.physics.add.collider(plataforms, plumbus);
-    
+    this.physics.add.collider(plataforms, portalgun);
+    this.physics.add.collider(plataforms, portal);
+
+    this.physics.add.overlap(player,portalgun,hitPistola,null,this);
+    this.physics.add.overlap(player,portal,hitPortal,null,this);
+
+    timecops = this.physics.add.group();
+
+    this.physics.add.collider(plataforms, timecops);
+
+    this.physics.add.overlap(player,timecops,hitTimecops,null,this);
+
     scoreText = this.add.text(16, 54, 'Score: 0', { fontSize: '32px', fill: '#000'});
+    levelText = this.add.text(16, 25, 'Level: 1', { fontSize: '32px', fill: '#000'});
 }
 
 function update ()
@@ -132,6 +144,12 @@ function update ()
         player.setVelocityY(-350);
     }
 
+    if (gameOver){
+
+        return;
+
+    }
+
 }
 
 function createPlumbus (plumbus){
@@ -147,5 +165,45 @@ function collectPlumbus (player, plumbus){
 
     score += 10 * nivel;
     scoreText.setText('Score: '+ score);
+
+}
+
+function hitPistola (player, portalgun){
+
+    portalgun.disableBody(true,true);
+    portal.enableBody(true, Phaser.Math.Between(10, 790), posicionesY[Phaser.Math.Between(0, 2)],true, true);
+
+}
+
+function hitPortal (player, portal){
+
+    nivel++;
+
+    portal.disableBody(true,true);
+    player.disableBody(true,true);
+
+    plumbus.children.iterate(function (child){
+        child.enableBody(true, child.x, 0, true, true);
+        createPlumbus(child);
+    });
+
+    player.enableBody(true, Phaser.Math.Between(10, 790), posicionesY[Phaser.Math.Between(0, 2)],true, true);
+    portalgun.enableBody(true, Phaser.Math.Between(10, 790), posicionesY[Phaser.Math.Between(0, 2)],true, true);
+    levelText.setText('Level: '+ nivel);
+
+    var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+    var timecop = timecops.create(x, 16, 'enemigo');
+    timecop.setBounce(1);
+    timecop.setCollideWorldBounds(true);
+    timecop.setVelocity(Phaser.Math.Between(-200, 200), 50);
+    timecop.allowGravity = false;
+}
+
+function hitTimecops (player, timecops){
+
+    this.physics.pause();
+    player.setTint(0xff0000);
+    player.anims.play('turn');
+    gameOver = true;
 
 }
