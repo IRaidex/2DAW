@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>Desarrollo web en entorno servidor - tema 10 - MVC</title>
 	
-	<link rel="stylesheet" href="<?= 'css/'.Config::$mvc_vis_css ?>"/>
+	<link rel="stylesheet" href="<?= '/css/'.Config::$mvc_vis_css ?>"/>
 </head>
 <body>
 	<header>
@@ -13,12 +13,12 @@
 
 	<nav>
 		<ul>
-			<li><a href="index.php?ctl=inicio">inicio</a></li>
-			<li><a href="index.php?ctl=listar">ver alimentos</a></li>
-			<li><a href="index.php?ctl=insertar">insertar alimento</a></li>
-			<li><a href="index.php?ctl=buscar">buscar por nombre</a></li>
-			<li><a href="index.php?ctl=buscarAlimentosPorEnergia">buscar por energía</a></li>
-			<li><a href="index.php?ctl=buscarAlimentosCombinada">búsqueda combinada</a></li>
+			<li><a href="/">Inicio</a></li>
+			<li><a href="/listar">Ver alimentos</a></li>
+			<li><a href="/insertar">Insertar alimento</a></li>
+			<li><a href="/buscar">Buscar por nombre</a></li>
+			<li><a href="/buscarAlimentosPorEnergia">Buscar por energía</a></li>
+			<li><a href="/buscarAlimentosCombinada">Búsqueda combinada</a></li>
 		</ul>
 	 </nav>
 

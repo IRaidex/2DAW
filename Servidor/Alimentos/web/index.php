@@ -17,7 +17,6 @@ $map = [
 ];
 
 // Parseo de la ruta
-echo $_GET['ctl'];
 if (isset($_GET['ctl'])) {
 	if (isset($map[$_GET['ctl']])) {
 		$ruta = $_GET['ctl'];

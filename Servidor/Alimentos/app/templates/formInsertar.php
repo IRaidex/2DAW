@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 <?php if(isset($params['mensaje'])) : ?>
-	<div class="mensaje"><?= $params['mensaje'] ?>/div>
+	<div class="mensaje"><?= $params['mensaje'] ?></div>
 <?php endif ?>
 
 <form name="formInsertar" action="index.php?ctl=insertar" method="post">
