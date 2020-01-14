@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css.css">
+    </head>
+    <body>
+        <h1>Grafico Circular</h1>
+        <h1>Alejandro Salcedo</h1>
+        <figure>
+            <figcaption>
+                Percentage of world population by continent
+            </figcaption>
+            <div class="buttons"></div>
+            <svg width="100" height="100" class="chart">
+                <circle r="25" cx="50" cy="50" class="pie"/>
+            </svg>
+        </figure>
+
+    </body>
+    <script>
+        var total = 158,
+            buttons = document.querySelector('.buttons'),
+            pie = document.querySelector('.pie'),
+            activeClass = 'active';
+
+        var continents = {
+            Xirivella: 60,
+            Manises : 9,
+            Mislata: 77,
+            Aldaia: 25,
+            Torrente: 95
+
+        };
+
+        // work out percentage as a result of total
+        var numberFixer = function(num){
+            var result = ((num * total) / 100);
+            return result;
+        }
+
+        // create a button for each country
+        for(property in continents){
+            var newEl = document.createElement('button');
+            newEl.innerText = property;
+            newEl.setAttribute('data-name', property);
+            buttons.appendChild(newEl);
+        }
+
+        // when you click a button setPieChart and setActiveClass
+        buttons.addEventListener('click', function(e){
+            if(e.target != e.currentTarget){
+                var el = e.target,
+                    name = el.getAttribute('data-name');
+                setPieChart(name);
+                setActiveClass(el);
+            }
+            e.stopPropagation();
+        });
+
+        var setPieChart = function(name){
+            var number = continents[name],
+                fixedNumber = numberFixer(number),
+                result = fixedNumber + ' ' + total;
+
+            pie.style.strokeDasharray = result;
+        }
+
+        var setActiveClass = function(el) {
+            for(var i = 0; i < buttons.children.length; i++) {
+                buttons.children[i].classList.remove(activeClass);
+                el.classList.add(activeClass);
+            }
+        }
+
+        // Set up default settings
+        setPieChart('asia');
+        setActiveClass(buttons.children[0]);
+    </script>
+</html>
