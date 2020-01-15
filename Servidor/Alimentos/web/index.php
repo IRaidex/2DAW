@@ -3,7 +3,9 @@
 // carga del modelo y los controladores
 require_once __DIR__ . '/../app/Config.php';
 require_once __DIR__ . '/../app/Model.php';
+require_once __DIR__ . '/../app/CuponesModel.php';
 require_once __DIR__ . '/../app/Controller.php';
+require_once __DIR__ . '/../app/CuponesController.php';
 // enrutamiento
 /* array asociativo cuya función es definir una tabla para mapear
 * (asociar), rutas en acciones de un controlador.
@@ -13,7 +15,10 @@ $map = [
 	'listar' => ['controller' =>'Controller', 'action' =>'listar'],
 	'insertar' => ['controller' =>'Controller', 'action' =>'insertar'],
 	'buscar'=>['controller' =>'Controller', 'action' =>'buscarPorNombre'],
-	'ver' => ['controller' =>'Controller', 'action' =>'ver']
+	'ver' => ['controller' =>'Controller', 'action' =>'ver'],
+	'buscarAlimentosPorEnergia' => ['controller' =>'Controller', 'action' =>'buscarPorEnergia'],
+	'buscarAlimentosCombinada' => ['controller' =>'Controller', 'action' =>'busquedaCombinada'],
+	'cupones' => ['controller' =>'CuponesController', 'action' =>'buscarCupones']
 ];
 
 // Parseo de la ruta

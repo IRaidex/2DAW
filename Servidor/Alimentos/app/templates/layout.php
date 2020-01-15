@@ -19,6 +19,7 @@
 			<li><a href="/buscar">Buscar por nombre</a></li>
 			<li><a href="/buscarAlimentosPorEnergia">Buscar por energía</a></li>
 			<li><a href="/buscarAlimentosCombinada">Búsqueda combinada</a></li>
+			<li><a href="/cupones">Cupones</a></li>
 		</ul>
 	 </nav>
 
