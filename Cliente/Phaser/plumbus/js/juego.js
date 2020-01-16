@@ -31,7 +31,7 @@ var scoreText = '';
 var levelText;
 var nivel = 1;
 var end = '';
-var puntuaciones = [1,1,1,1,1];
+var puntuaciones = [];
 
 var posicionesY = [400, 250, 200];
 
@@ -244,8 +244,14 @@ function hitTimecops (player, timecops){
         localStorage.setItem('topScore', JSON.stringify(puntuaciones));
     }
 
-
-
+    var x = 150;
+    for(var i=0 ; i<puntuaciones.length ; i++){
+        x += 50;
+        end = this.add.text(295, x, i+1+' => '+puntuaciones[i], { fontSize: '50px', fill: 'red'});
+    }
+    
+    scoreText = this.add.text(20, 510, 'Score: '+score, { fontSize: '40px', fill: 'white'});
+    levelText = this.add.text(20, 550, 'Level: '+nivel, { fontSize: '40px', fill: 'white'});
 
 
 
