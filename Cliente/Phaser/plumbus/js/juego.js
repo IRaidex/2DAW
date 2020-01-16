@@ -30,6 +30,8 @@ var gameOver = false;
 var scoreText = '';
 var levelText;
 var nivel = 1;
+var end = '';
+var puntuaciones = [1,1,1,1,1];
 
 var posicionesY = [400, 250, 200];
 
@@ -191,12 +193,17 @@ function hitPortal (player, portal){
     portalgun.enableBody(true, Phaser.Math.Between(10, 790), posicionesY[Phaser.Math.Between(0, 2)],true, true);
     levelText.setText('Level: '+ nivel);
 
-    var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-    var timecop = timecops.create(x, 16, 'enemigo');
-    timecop.setBounce(1);
-    timecop.setCollideWorldBounds(true);
-    timecop.setVelocity(Phaser.Math.Between(-200, 200), 50);
-    timecop.allowGravity = false;
+    if(nivel % 2 == 0){
+
+        var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+        var timecop = timecops.create(x, 16, 'enemigo');
+        timecop.setBounce(1);
+        timecop.setCollideWorldBounds(true);
+        timecop.setVelocity(Phaser.Math.Between(-200, 200), 50);
+        timecop.allowGravity = false;
+
+    }
+
 }
 
 function hitTimecops (player, timecops){
@@ -205,5 +212,41 @@ function hitTimecops (player, timecops){
     player.setTint(0xff0000);
     player.anims.play('turn');
     gameOver = true;
+    this.add.image(400,300 ,'fondoNegro');
+    end = this.add.text(200, 100, 'GAME OVER', { fontSize: '75px', fill: 'red'});
+
+    if(localStorage.getItem('topScore') != null){
+
+        puntuaciones = localStorage.getItem('topScore');
+        puntuaciones = JSON.parse(puntuaciones);
+        if(puntuaciones.length == 5){
+            if( puntuaciones[4] < score){
+                puntuaciones[4] = score;
+            }
+        }else{
+            console.log(1);
+            puntuaciones.push(score);
+        }
+        console.log(puntuaciones);
+
+        for(var i=0 ; i<puntuaciones.length ; i++){
+            if(puntuaciones[4] < score){
+                puntuaciones[4] = score;
+            }
+        }
+
+        puntuaciones.sort(function(a,b){return a - b;});
+        puntuaciones.reverse();
+        localStorage.setItem('topScore', JSON.stringify(puntuaciones));
+
+    }else{
+        puntuaciones.push(score);
+        localStorage.setItem('topScore', JSON.stringify(puntuaciones));
+    }
+
+
+
+
+
 
 }
