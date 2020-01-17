@@ -8,7 +8,7 @@ class CuponesController
                        Config::$mvc_bd_usuario,
                        Config::$mvc_bd_clave,
                        Config::$mvc_bd_hostname);
-        $params = ['cupones' => $m->dameCupones()];
+        $params = ['resultado' => $m->dameCupones()];
         require __DIR__ . '/templates/buscarCupones.php';
     }
 
