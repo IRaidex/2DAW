@@ -24,7 +24,7 @@
             <br>
             DNI: <span id='dni'><?=$alumno->dni?></span>
             <br>
-            Fecha de nacimiento: <span id='fNac'><?=$alumno->fechanacimiento?></span>
+            Fecha de nacimiento: <span id='fechanacimiento'><?=$alumno->fechanacimiento?></span>
             <br>
             Email: <span id='email'><?=$alumno->email?></span>
             <br>

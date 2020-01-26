@@ -6,15 +6,28 @@ $(function(){
     });
 
     $('span').click(function(){
-        var id = 'i'+$(this).attr('id');
-        var input = $('<input> option:selected').attr('id',id).val($(this).html());
+        var id = 'input'+$(this).attr('id');
+        var input = $('<input>').attr('id',id).val($(this).html());
         $(this).append(input);
         input.select();
+        localStorage.setItem('span', $(this).html());
     });
 
     $('body').on('blur', 'input' , function(){
-        console.log('hola')
-        $(this).remove();
+        var campo = $(this).attr('id').split('input')[1];
+        var idAl = $('div').attr('id').split('alumno')[1];
+        var valor = $(this).val();
+        console.log(campo,idAl,valor);
+        $.post({url: 'actualizarDatos.php',
+                data: { idAlumno : idAl , campoActualizar : campo , valor : valor },
+                success: function(data){
+
+                    console.log(data);
+
+                },
+                dataType: 'json'
+               });
+
     });
 
 });
