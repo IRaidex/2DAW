@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <script>
+            
+            var coordenadaX = 0;  
+            var coordenadaY = 0;
+            var final = true;
+            
+            function startTime() {
+                var radial = document.getElementById('rad1');
+                if(final){
+                    coordenadaX += 2;
+                    coordenadaY += 2;
+                    if(coordenadaX == 100){
+                        final=false
+                    }
+                }else{
+                    coordenadaX += -2;
+                    coordenadaY += -2;
+                    if(coordenadaX == 0){
+                        final=true;
+                    }
+                }
+
+                radial.setAttribute('fx',coordenadaX+'%');
+                radial.setAttribute('fy',coordenadaY+'%');
+                requestAnimationFrame(startTime);
+
+            }
+
+
+
+        </script>
+    </head>
+    <body onload="startTime()">
+
+        <svg width=270 height=270 >
+            <defs><radialGradient id="rad1"cx="50%" cy="50%" r="75%" fx="80%" fy="40%">
+                <stop offset="0" stop-color="red"/><stop offset="1" stop-color="#641E16"/>
+                </radialGradient>
+            </defs>
+            <circle cx=135 cy=135 r=120 fill="url(#rad1)"/>
+        </svg>
+
+
+
+    </body>
+</html>
