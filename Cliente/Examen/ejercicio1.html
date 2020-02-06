@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejercicio 1</title>
+        <style>
+            body {
+                margin: 0;
+                background-color: #F39621;
+            }
+
+            .item1 { grid-area: header; }
+            .item2 { grid-area: enunciado; }
+            .item3 { grid-area: main; }
+            .item4 { grid-area: footer; }
+
+            .item1, .item4 {
+                text-align: center;
+                font-size: 2em;
+                font-weight: bold;
+            }
+            .item2 {
+                padding: 1em!important;
+            }
+            .item3 {
+                padding: 2em!important;
+                font-size: 1.1em;
+            }
+
+            .grid-container {
+                display: grid;
+                grid-template-columns: 15% auto 15%;
+                grid-template-areas:
+                    '. header'
+                    '. main'
+                    '. enunciado'
+                    '. footer';
+                grid-gap: 10px;
+                background-color: #F39621;
+                margin: 0;
+                padding: 10px;
+                height: 100%;
+            }
+            .grid-container > div {
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 20px 0;
+            }
+
+            .tab-container {
+                display: grid;
+                grid-template-columns: auto auto auto auto;
+                padding: 10px;
+            }
+            .tab-item {
+                background-color: rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                padding: 5px 20px;
+                font-size: 1.2em;
+                font-weight: bold;
+                text-align: center;
+                border-radius: .5em .5em 0 0;
+                cursor: pointer;
+            }
+            .tab-selected {
+                background-color: #F39621;
+            }
+            .tab-content {
+                grid-column: 1 / 5;
+                background-color: rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                border-top: 0;
+                padding: 5px 20px;
+                min-height: 15em;
+            }
+            .fotoaficion {
+                width: 80%;
+            }
+
+        </style>
+        <script
+                src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+                <script src="js/ej1.js"></script>
+    </head>
+    <body>
+
+        <div class="grid-container">
+            <div class="item1">Ejercicio 1</div>
+
+            <div class="item2">
+                Enunciado:<br><br>
+                Al pulsar en cada una de las pestañas se realizará una petición AJAX
+                al servidor al archivo ejercicio1.php indicando la sección que se requiere.<br>
+                Cuando se pulse una pestaña se cambiará la clase para que aparezca marcada y se desmarcarán las otras pestañas.<br><br>
+                Se valorará el uso de animaciones al mostrar y ocultar elementos.
+            </div>
+
+            <div class="item3 tab-container">
+                <div id="inicio" class="tab-item tab-selected">Inicio</div>
+                <div id="plantilla" class="tab-item">Sección 1</div>
+                <div id="partidos" class="tab-item">Sección 2</div>
+                <div id="aficion" class="tab-item">Sección 3</div>
+                <div id="seccion" class="tab-content">
+                    <h1 id="titulo">Título</h1>
+                    <div id="contenido">Contenido</div>
+                </div>
+            </div>
+
+            <div class="item4">Examen Desarrollo Web en Entorno Cliente 2019-20</div>
+        </div>
+
+    </body>
+</html>
